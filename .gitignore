@@ -1,0 +1,8 @@
+*.zip
+*.rar
+*.tar
+*.tar-gz
+/img/
+/fonts/
+/upload/
+/bitrix/
