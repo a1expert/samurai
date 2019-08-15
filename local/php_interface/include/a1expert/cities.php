@@ -17,7 +17,7 @@ namespace A1expert
             $cache = Application::getInstance()->getManagedCache();
             $fixer = new Fixer();
             $arOrder = $fixer->SetOrder();
-            $arFilter = $fixer->SetFilter(array("IBLOCK_ID"=>CITIES_IB));
+            $arFilter = $fixer->SetFilter(array("IBLOCK_ID"=>CITIES_ID));
             $arSelect = $fixer->SetSelect(array('ID', 'IBLOCK_ID', 'NAME', 'CODE', 'PROPERTY_LINK'));
             if ($cache->read(36000000, "cities"))
             {
@@ -30,8 +30,8 @@ namespace A1expert
                 $cache->set("cities", $cahedCities);
                 $this->cities = $cahedCities;
             }
-            if(empty($this->cities))
-                throw new Exception('cities is empty!', 0, __FILE__, __LINE__);
+            // if(empty($this->cities))
+                // throw new Exception('cities is empty!', 0, __FILE__, __LINE__);
         }
 
         function MakeCitiesList()
@@ -41,7 +41,7 @@ namespace A1expert
             foreach ($this->cities as $city)
             {
                 $citiesList .= "<li class=\"cities__item\">
-                                    <a href=\"//{$city['PROPERTY_LINK_VALUE']}\" class=\"cities__link\" data-city=\"{$city['CODE']}\">{$city['NAME']}</a>
+                                    <a href=\"//{$city['PROPERTY_LINK_VALUE']}\" class=\"cities__link\" data-city=\"{$city['ID']}\">{$city['NAME']}</a>
                                 </li>";
             }
             $citiesList .= '</ul>
@@ -54,7 +54,7 @@ namespace A1expert
             foreach ($this->cities as $city)
             {
                 if($_SERVER['HTTP_HOST'] === $city['PROPERTY_LINK_VALUE'])
-                    setcookie('city', $city['CODE'], 0, '/');
+                    setcookie('city', $city['ID'], 0, '/');
             }
         }
     }    

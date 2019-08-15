@@ -10,9 +10,8 @@ $page = $APPLICATION->GetCurPage(true);
 $assets = Asset::getInstance();
 $cities = new Cities();
 $mainPage = ($page == "/index.php") ? true : false;
-$adminIndaHouse = $USER->isAdmin();
 $cities->SetCookie();
-$pageIntroBg = ($APPLICATION->GetPageProperty('pageIntroBg') == 'Y') ? 'page-intro--background' : '';
+$pageIntroBg = ($APPLICATION->GetDirProperty('pageIntroBg') == 'Y') ? 'page-intro--background' : '';
 ?>
 <!DOCTYPE html>
 <html lang="<?=LANGUAGE_ID?>">
@@ -23,9 +22,9 @@ $pageIntroBg = ($APPLICATION->GetPageProperty('pageIntroBg') == 'Y') ? 'page-int
         $assets->addString('<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">');
         $assets->addString('<meta http-equiv="X-UA-Compatible" content="IE=edge">');
         //CSS
-        $assets->addCss('/local/assets/styles/webpack-bundle.css');
+        $assets->addCss('/local/assets/styles/main.css');
 		//SCRIPTS
-        $assets->addJS('/local/assets/scripts/webpack-bundle.js');
+        $assets->addJS('/local/assets/scripts/main.js');
         ?>
         <link as="font" crossorigin="anonymous" href="fonts/Circe-Bold.woff" rel="preload">
         <link as="font" crossorigin="anonymous" href="fonts/Circe-Bold.woff2" rel="preload">
@@ -34,12 +33,12 @@ $pageIntroBg = ($APPLICATION->GetPageProperty('pageIntroBg') == 'Y') ? 'page-int
         <link as="font" crossorigin="anonymous" href="fonts/Circe-Regular.woff" rel="preload">
         <link as="font" crossorigin="anonymous" href="fonts/Circe-Regular.woff2" rel="preload">
         <?//<link href="/local/assets/images/icon.png" rel="icon" type="image/png">?>
-		<title><?$APPLICATION->ShowTitle();?></title>
+		<title><?$APPLICATION->ShowProperty('metaTitle');?></title>
 	</head>
-
+    
 	<body>
-    <?$APPLICATION->showPanel();?>
-    <?//print($cities->MakeCitiesList());?>
+        <?$APPLICATION->showPanel();?>
+        <?//print($cities->MakeCitiesList());?>
         <div class="wrapper">
             <div class="layout">
                 <header class="header">
@@ -47,12 +46,12 @@ $pageIntroBg = ($APPLICATION->GetPageProperty('pageIntroBg') == 'Y') ? 'page-int
                         <div class="container header__container">
                             <div class="logo header__logo">
                                 <a href="/" class="logo__link">
-                                    <img src="/local/assets/styles/images/logo_colored.png" alt="Сытый самурай" width="129" height="113">
-                                </a>
-                            </div>
-                            <div class="header__inner">
-                                <div class="header__content header__content--top">
-                                    <nav class="menu">
+                                <img src="/local/assets/styles/images/logo_colored.png" alt="Сытый самурай" width="129" height="113">
+                            </a>
+                        </div>
+                        <div class="header__inner">
+                            <div class="header__content header__content--top">
+                                <nav class="menu">
                                     <?$APPLICATION->IncludeComponent("bitrix:menu", "top", Array(
                                         "ALLOW_MULTI_SELECT" => "N",
                                         "CHILD_MENU_TYPE" => "",
@@ -110,8 +109,9 @@ $pageIntroBg = ($APPLICATION->GetPageProperty('pageIntroBg') == 'Y') ? 'page-int
                     </nav>
                 </header>
                 <main class="main">
-                    <div class="page-intro <?=$pageIntroBg;?>">
+                    <div class="page-intro <?=$pageIntroBg?>">
                         <div class="container page-intro__container">
-                            <h1 class="page-title">Акции</h1>
+                            <h1 class="page-title"><?$APPLICATION->ShowTitle(true);?></h1>
+                            <?if(!$mainPage)$APPLICATION->IncludeComponent("bitrix:breadcrumb", "crumbs",	Array("PATH" => "", "SITE_ID" => "s1", "START_FROM" => "0"));?>
                         </div>
                     </div>

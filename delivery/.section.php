@@ -1,3 +1,6 @@
 <?
-$sSectionName="Условия доставки";
+$sSectionName = "Условия доставки";
+$arDirProperties = Array(
+   "pageIntroBg" => "Y"
+);
 ?>

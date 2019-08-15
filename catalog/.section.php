@@ -1,3 +1,5 @@
 <?
-$sSectionName="Каталог";
+$arDirProperties = Array(
+   "pageIntroBg" => "Y"
+);
 ?>
