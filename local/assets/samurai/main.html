@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link sizes="192x192" href="/favicon-192x192.png" rel="icon" type="image/png">
+		<link sizes="160x160" href="/favicon-160x160.png" rel="icon" type="image/png">
+		<link sizes="96x96" href="/favicon-96x96.png" rel="icon" type="image/png">
+		<link sizes="16x16" href="/favicon-16x16.png" rel="icon" type="image/png">
+		<link sizes="32x32" href="/favicon-32x32.png" rel="icon" type="image/png">
+		<title>CSSSR Project Template</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.css" rel="stylesheet">
+		<link href="./assets/styles/app.min.css" rel="stylesheet">
+	</head>
+
+	<body class="page">
+		<div class="wrapper">
+			<div class="layout"></div>
+			<header class="header">
+				<div class="header__top">
+					<div class="header-mobile-top">
+						<div class="container">
+							<ul class="header-mobile-top__list">
+								<li class="header-mobile-top__item"><svg xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="./assets/images/icon.svg#icon_pin"></use></svg>Сургут</li>
+								<li class="header-mobile-top__item"><svg xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="./assets/images/icon.svg#icon_phone"></use>
+										</svg>+7(3462)269-57-58</li>
+								<li class="header-mobile-top__item"><a href="#"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_user"></use></svg></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="container header__container">
+						<div class="logo header__logo"><a href="/" class="logo__link"><img
+								 src="assets/images/logo_colored.png" alt="Сытый самурай" width="129"
+								 height="113" /></a></div>
+						<div class="header__inner">
+							<div class="header__content header__content--top">
+								<nav class="menu">
+									<ul class="menu__list">
+										<li class="menu__item"><a href="stocks.html" class="menu__link">Акции</a></li>
+										<li class="menu__item"><a href="delivery.html" class="menu__link">Условия
+												доставки</a></li>
+										<li class="menu__item"><a href="about.html" class="menu__link">О нас</a></li>
+										<li class="menu__item"><a href="feedback.html" class="menu__link">Отзывы</a>
+										</li>
+										<li class="menu__item"><a href="#" class="menu__link">Вакансии</a></li>
+										<li class="menu__item"><a href="#" class="menu__link">Контакты</a></li>
+									</ul>
+								</nav>
+								<ul class="controls header__controls">
+									<li class="controls__item">
+										<p class="controls__element controls__element--bonus"><svg
+											 xmlns:xlink="http://www.w3.org/1999/xlink">
+												<use xlink:href="./assets/images/icon.svg#icon_blades"></use></svg>150
+											бонусов</p>
+									</li>
+									<li class="controls__item"><a href="#"
+										 class="controls__element controls__element--account"><svg
+											 xmlns:xlink="http://www.w3.org/1999/xlink">
+												<use xlink:href="./assets/images/icon.svg#icon_user"></use></svg>Личный
+											кабинет</a></li>
+								</ul>
+							</div>
+							<div class="header__content header__content--mobile"><button
+								 class="header__menu-toggler"></button><a href="/" class="header__mobile-logo"><img
+									 src="assets/images/logo_colored.png" alt="Сытый самурай" width="129"
+									 height="113" /></a>
+								<ul class="info header__info">
+									<li class="info__item info__item--address info__item--invert"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_pin"></use></svg>Доставка
+										еды<a href="#" class="info__city-name">&nbsp; в Сургуте</a></li>
+									<li class="info__item info__item--phone info__item--invert"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_phone"></use>
+											</svg>+7(3462)269-57-58</li>
+									<li class="info__item info__item--work-time info__item--invert"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_timer"></use></svg>Принимаем
+										заказы с<br />с 10:30 - 23:30</li>
+								</ul>
+								<div class="cart-header header__cart">
+									<div class="cart-header__info">
+										<p class="cart-header__total-price">100 475 ₽</p>
+										<p class="cart-header__total-quantity">1 товар</p>
+									</div><a href="#" class="cart-header__link"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_cart"></use></svg>Корзина</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<nav class="submenu">
+					<div class="container">
+						<ul class="submenu__list">
+							<li class="submenu__item"><a href="detailed.html" class="submenu__link">Роллы</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Суши</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Суши-сеты</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Пицца</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Кесадии</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Лапша</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Горячее</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Салаты</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Десерты</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Соусы</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Акции</a></li>
+							<li class="submenu__item submenu__item--toggler"><button type="button"
+								 class="submenu__toggler">burger_menu</button>
+								<ul class="submenu__responsive-list"></ul>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<main class="main">
+				<div class="hero main__section">
+					<div data-src="" class="hero__carousel"><img src="assets/images/hero1.jpg" alt="акция"></div>
+				</div>
+				<section class="section main__section">
+					<div class="container">
+						<h2 class="section__title">Товар дня</h2>
+						<div class="sale">
+							<ul class="sale__controls js-tabs">
+								<li class="sale__controls-item"><button
+									 class="sale__control sale__control--active">Сегодня</button></li>
+								<li class="sale__controls-item"><button class="sale__control">Завтра</button></li>
+								<li class="sale__controls-item"><button class="sale__control">Послезавтра</button></li>
+							</ul>
+							<div class="sale__content">
+								<div id="sale-today" class="sale__item">
+									<div class="sale__description">
+										<div class="sale__title">Филадельфия лайт</div>
+										<ul class="sale__chars">
+											<li class="sale__chars-item sale__chars-item--weight"><svg
+												 xmlns:xlink="http://www.w3.org/1999/xlink">
+													<use xlink:href="./assets/images/icon.svg#icon_scale"></use>
+													</svg>240 грамм</li>
+											<li class="sale__chars-item sale__chars-item--quantity"><svg
+												 xmlns:xlink="http://www.w3.org/1999/xlink">
+													<use xlink:href="./assets/images/icon.svg#icon_sushi"></use></svg>6
+												штук</li>
+										</ul>
+										<div class="sale__footer">
+											<div class="sale__price">
+												<p class="sale__old-price">2 475 ₽</p>
+												<p class="sale__new-price">2 475 ₽</p>
+											</div>
+											<div class="sale__button"><button class="button button--add-to-cart"><svg
+													 xmlns:xlink="http://www.w3.org/1999/xlink">
+														<use xlink:href="./assets/images/icon.svg#icon_cart"></use>
+														</svg>Беру!</button></div>
+										</div>
+									</div>
+									<div class="sale__photo"><img src="assets/images/sale-pic.png"></div>
+									<div class="sale__counter">
+										<div class="counter js-counter">
+											<p class="sale__subtitle"><strong>До конца акции <br>осталось:</strong></p>
+											<div class="counter__body">
+												<div class="counter__hours">00</div>
+												<div class="counter__divider">:</div>
+												<div class="counter__minutes">00</div>
+												<div class="counter__divider">:</div>
+												<div class="counter__seconds">00</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="section main__section">
+					<div class="container">
+						<h2 class="section__title">Роллы</h2>
+						<ul class="owl-carousel main-items">
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="section main__section">
+					<div class="container">
+						<h2 class="section__title">Суши</h2>
+						<ul class="owl-carousel main-items">
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="section main__section">
+					<div class="container">
+						<h2 class="section__title">Суши-сеты</h2>
+						<ul class="owl-carousel main-items main-items--rolls">
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="section main__section">
+					<div class="container">
+						<h2 class="section__title">Пиццы</h2>
+						<ul class="owl-carousel main-items main-items--rolls">
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="section main__section">
+					<div class="container">
+						<h2 class="section__title">Кесадии</h2>
+						<ul class="owl-carousel main-items main-items--rolls">
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="section main__section">
+					<div class="container">
+						<h2 class="section__title">Лапша в коробочках</h2>
+						<ul class="owl-carousel main-items main-items--rolls">
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="section main__section">
+					<div class="container">
+						<h2 class="section__title">Горячее</h2>
+						<ul class="owl-carousel main-items main-items--rolls">
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="section main__section">
+					<div class="container">
+						<h2 class="section__title">Салаты</h2>
+						<ul class="owl-carousel main-items main-items--rolls">
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="section main__section">
+					<div class="container">
+						<h2 class="section__title">Десерты и напитки</h2>
+						<ul class="owl-carousel main-items main-items--rolls">
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="section">
+					<div class="container">
+						<h2 class="section__title">Соусы</h2>
+						<ul class="owl-carousel main-items main-items--rolls">
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+							<li>
+								<article class="card"><a href="#popup" class="card__toggle card__toggle--image"><img
+										 src="assets/images/card-picture.png" alt="Картинка товара" width="330"
+										 height="234" data-detail="assets/images/card-picture--hi-res.png"
+										 class="card__picture"></a>
+									<div class="card__body"><a href="#popup" class="card__toggle card__toggle--text">
+											<h3 class="card__title">Филадельфия Лайт Филадельфия Лайт Филадельфия Лайт
+											</h3>
+										</a>
+										<ul class="card__chars">
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--weight">
+												240 грамм</li>
+											<li
+											 class="card__chars-item card__chars-item--main card__chars-item--quantity">
+												6 штук</li>
+										</ul>
+										<p class="card__ingredients"><strong>Рис, сливочный сыр, огурец, жареный лосось
+												в соусе терияки, украшен стружкой тунца.</strong></p>
+										<ul class="card__chars--extra">
+											<li
+											 class="card__chars-item card__chars-item--extra card__chars-item--proteins">
+												4.0<small class="card__chars-nutrients">белки</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--fat">
+												4.0<small class="card__chars-nutrients">жиры</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												4.0<small class="card__chars-nutrients">углеводы</small></li>
+											<li class="card__chars-item card__chars-item--extra card__chars-item--carb">
+												1909.0<small class="card__chars-nutrients">каллории</small></li>
+										</ul>
+										<div class="card__footer">
+											<p class="card__price">2 475<span class="currency">₽</span></p><a href="#"
+											 class="card__add-to-cart">Беру!</a>
+										</div>
+									</div>
+								</article>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</main>
+			<footer class="footer">
+				<div class="container">
+					<div class="footer__inner">
+						<div class="footer__top"><a href="#" class="footer__logo"><img
+								 src="assets/images/logo_white.png" alt="сытый самурай" width="103" height="90"
+								 class="footer__logo-picture" /></a>
+							<ul class="info footer__info">
+								<li class="info__item info__item--address"><svg
+									 xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="./assets/images/icon.svg#icon_pin"></use></svg>Сургут,
+									Пр.Пролетарский 10/3</li>
+								<li class="info__item info__item--phone"><svg
+									 xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="./assets/images/icon.svg#icon_phone"></use>
+										</svg>+7(3462)269-57-58</li>
+								<li class="info__item info__item--work-time"><svg
+									 xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="./assets/images/icon.svg#icon_timer"></use></svg>Работаем с
+									10:30 - 23:30</li>
+							</ul>
+							<ul class="socials socials--footer">
+								<li class="socials__item"><a href="#" class="socials__link socials__link--vk"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_vk"></use></svg></a></li>
+								<li class="socials__item"><a href="#" class="socials__link socials__link--fb"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_facebook"></use></svg></a>
+								</li>
+								<li class="socials__item"><a href="#" class="socials__link socials__link--inst"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_instagram"></use></svg></a>
+								</li>
+								<li class="socials__item"><a href="#" class="socials__link socials__link--ok"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_odnoklassniki"></use>
+											</svg></a></li>
+							</ul>
+						</div>
+						<div class="footer__bottom">
+							<div class="footer__copyrights">&copy; 2011-2019 ООО «СМАЙЛ»,</div>
+							<div class="footer__requisites">ИНН 860238152024, ОГРН 318861700002247. </div>
+							<div class="footer__policy"><a href="#">Политика конфиденциальности</a></div>
+							<div class="footer__madeby">Разработка и продвижение:<a href="#" target="_blank"><img
+									 src="assets/images/logo_dev.png" alt="Логотип А1-Эксперт" width="114"
+									 height="42" /></a></div>
+						</div>
+					</div>
+				</div><template id="city">
+					<div class="city-choose">
+						<h2 class="city-choose__title">Выберите город</h2>
+						<form class="city-choose__form">
+							<div class="checkbox"><input type="checkbox" name="city" id="surgut" value="surgut"
+								 class="visually-hidden" /><label for="surgut" class="checkbox__label">Сургут</label>
+							</div>
+							<div class="checkbox"><input type="checkbox" name="city" id="vartovsk" value="vartovsk"
+								 class="visually-hidden" /><label for="vartovsk"
+								 class="checkbox__label">Нижневартовск</label></div>
+							<div class="checkbox"><input type="checkbox" name="city" id="lyantor" value="lyantor"
+								 class="visually-hidden" /><label for="lyantor" class="checkbox__label">Лянтор</label>
+							</div>
+							<div class="checkbox"><input type="checkbox" name="city" id="pokachi" value="pokachi"
+								 class="visually-hidden" /><label for="pokachi" class="checkbox__label">Покачи</label>
+							</div>
+						</form>
+					</div>
+				</template>
+			</footer>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.js"></script>
+		<script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+		<script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+		<script src="assets/scripts/main.js"></script>
+	</body>
+
+</html>

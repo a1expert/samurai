@@ -7,5 +7,8 @@
 	<li class="submenu__item"><a href="<?=$arItem["LINK"]?>" class="submenu__link"><?=$arItem["TEXT"]?></a></li>
 	<?
 }?>
-	<li class="submenu__item"><button type="button" class="submenu__toggler">burger_menu</button></li>
+	<li class="submenu__itemToggler">
+		<button type="button" class="submenu__toggler">burger_menu</button>
+		<ul class="submenu__responsive-list hide"></ul>
+	</li>
 </ul>

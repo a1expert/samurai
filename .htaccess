@@ -12,6 +12,10 @@ ErrorDocument 404 /404.php
 <IfModule mod_rewrite.c>
 	Options +FollowSymLinks
 	RewriteEngine On
+
+	# RewriteCond %{REQUEST_FILENAME} ^http://butorin-e-v1\.myjino\.ru/hui_pizda_govno$
+	RewriteRule ^http://butorin-e-v1\.myjino\.ru/hui_pizda_govno$ http://butorin-e-v1.myjino.ru [R=301,L]
+
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-l
 	RewriteCond %{REQUEST_FILENAME} !-d

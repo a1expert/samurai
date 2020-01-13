@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link sizes="192x192" href="/favicon-192x192.png" rel="icon" type="image/png">
+		<link sizes="160x160" href="/favicon-160x160.png" rel="icon" type="image/png">
+		<link sizes="96x96" href="/favicon-96x96.png" rel="icon" type="image/png">
+		<link sizes="16x16" href="/favicon-16x16.png" rel="icon" type="image/png">
+		<link sizes="32x32" href="/favicon-32x32.png" rel="icon" type="image/png">
+		<title>Оформление заказа</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.css" rel="stylesheet">
+		<link href="./assets/styles/app.min.css" rel="stylesheet">
+	</head>
+
+	<body class="page">
+		<div class="wrapper">
+			<div class="layout"></div>
+			<header class="header">
+				<div class="header__top">
+					<div class="header-mobile-top">
+						<div class="container">
+							<ul class="header-mobile-top__list">
+								<li class="header-mobile-top__item"><svg xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="./assets/images/icon.svg#icon_pin"></use></svg>Сургут</li>
+								<li class="header-mobile-top__item"><svg xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="./assets/images/icon.svg#icon_phone"></use>
+										</svg>+7(3462)269-57-58</li>
+								<li class="header-mobile-top__item"><a href="#"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_user"></use></svg></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="container header__container">
+						<div class="logo header__logo"><a href="/" class="logo__link"><img
+								 src="assets/images/logo_colored.png" alt="Сытый самурай" width="129"
+								 height="113" /></a></div>
+						<div class="header__inner">
+							<div class="header__content header__content--top">
+								<nav class="menu">
+									<ul class="menu__list">
+										<li class="menu__item"><a href="stocks.html" class="menu__link">Акции</a></li>
+										<li class="menu__item"><a href="delivery.html" class="menu__link">Условия
+												доставки</a></li>
+										<li class="menu__item"><a href="about.html" class="menu__link">О нас</a></li>
+										<li class="menu__item"><a href="feedback.html" class="menu__link">Отзывы</a>
+										</li>
+										<li class="menu__item"><a href="#" class="menu__link">Вакансии</a></li>
+										<li class="menu__item"><a href="#" class="menu__link">Контакты</a></li>
+									</ul>
+								</nav>
+								<ul class="controls header__controls">
+									<li class="controls__item">
+										<p class="controls__element controls__element--bonus"><svg
+											 xmlns:xlink="http://www.w3.org/1999/xlink">
+												<use xlink:href="./assets/images/icon.svg#icon_blades"></use></svg>150
+											бонусов</p>
+									</li>
+									<li class="controls__item"><a href="#"
+										 class="controls__element controls__element--account"><svg
+											 xmlns:xlink="http://www.w3.org/1999/xlink">
+												<use xlink:href="./assets/images/icon.svg#icon_user"></use></svg>Личный
+											кабинет</a></li>
+								</ul>
+							</div>
+							<div class="header__content header__content--mobile"><button
+								 class="header__menu-toggler"></button><a href="/" class="header__mobile-logo"><img
+									 src="assets/images/logo_colored.png" alt="Сытый самурай" width="129"
+									 height="113" /></a>
+								<ul class="info header__info">
+									<li class="info__item info__item--address info__item--invert"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_pin"></use></svg>Доставка
+										еды<a href="#" class="info__city-name">&nbsp; в Сургуте</a></li>
+									<li class="info__item info__item--phone info__item--invert"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_phone"></use>
+											</svg>+7(3462)269-57-58</li>
+									<li class="info__item info__item--work-time info__item--invert"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_timer"></use></svg>Принимаем
+										заказы с<br />с 10:30 - 23:30</li>
+								</ul>
+								<div class="cart-header header__cart">
+									<div class="cart-header__info">
+										<p class="cart-header__total-price">100 475 ₽</p>
+										<p class="cart-header__total-quantity">1 товар</p>
+									</div><a href="#" class="cart-header__link"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_cart"></use></svg>Корзина</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<nav class="submenu">
+					<div class="container">
+						<ul class="submenu__list">
+							<li class="submenu__item"><a href="detailed.html" class="submenu__link">Роллы</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Суши</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Суши-сеты</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Пицца</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Кесадии</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Лапша</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Горячее</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Салаты</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Десерты</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Соусы</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Акции</a></li>
+							<li class="submenu__item submenu__item--toggler"><button type="button"
+								 class="submenu__toggler">burger_menu</button>
+								<ul class="submenu__responsive-list"></ul>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<main class="main">
+				<div class="page-intro">
+					<div class="container page-intro__container">
+						<h1 class="page-title">Оформление заказа</h1>
+						<ul class="breadcrumbs page-intro__breadcrumbs">
+							<li class="breadcrumbs__item"><a href="/" class="breadcrumbs__link">Главная</a></li>
+							<li class="breadcrumbs__item"><a class="breadcrumbs__link">Каталог</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="container">
+					<div class="tabs">
+						<div class="tabs__mobile-controls">
+							<div class="tabs__mobile-controls-inner"><svg xmlns:xlink="http://www.w3.org/1999/xlink">
+									<use xlink:href="./assets/images/icon.svg#icon_cursor"></use></svg><select
+								 class="tabs__mobile-controls-toggler">
+									<option value="tab-1" data-icon="./assets/images/icon.svg#icon_cursor" selected>Как
+										обычно</option>
+									<option value="tab-2" data-icon="./assets/images/icon.svg#icon_phone-working">В один
+										клик</option>
+								</select></div>
+						</div>
+						<div class="tabs__controls"><button data-tab="tab-1"
+							 class="tabs__button tabs__button--active"><svg xmlns:xlink="http://www.w3.org/1999/xlink">
+									<use xlink:href="./assets/images/icon.svg#icon_cursor"></use></svg>Как
+								обычно</button><button data-tab="tab-2" class="tabs__button"><svg
+								 xmlns:xlink="http://www.w3.org/1999/xlink">
+									<use xlink:href="./assets/images/icon.svg#icon_phone-working"></use></svg>В один
+								клик</button></div>
+						<div class="tabs__content">
+							<div id="tab-1">
+								<form action="" class="order-form">
+									<fieldset class="order-form__section order-form__who">
+										<legend class="order-form__legend">Кому доставить?</legend>
+										<div class="order-form__layout">
+											<div class="order-form__group order-form__group--medium"><label for="name"
+												 class="order-form__label">Ваше имя*</label><input id="name" type="text"
+												 class="input order-form__input"></div>
+											<div class="order-form__group order-form__group--medium"><label for="phone"
+												 class="order-form__label">Ваш телефон*</label><input id="phone"
+												 type="text" class="input order-form__input"></div>
+										</div>
+									</fieldset>
+									<fieldset class="order-form__section order-form__who">
+										<legend class="order-form__legend">Куда везем?</legend>
+										<div class="order-form__layout">
+											<div class="order-form__group order-form__group--medium"><label for="name"
+												 class="order-form__label">Выберите город*</label>
+												<div class="select"><select name="city"
+													 class="order-form__select select__toggler">
+														<option>Сургут</option>
+														<option selected>не Сургут</option>
+														<option>снова не Сургут</option>
+														<option>а вот и Сургут</option>
+													</select></div>
+											</div>
+											<div class="order-form__group order-form__group--medium"><label for="street"
+												 class="order-form__label">Ваша улица</label><input type="text"
+												 id="street" class="input order-form__input"></div>
+											<div class="order-form__group order-form__group--small"><label for="house"
+												 class="order-form__label">Дом</label><input type="text" id="house"
+												 class="input order-form__input"></div>
+											<div class="order-form__group order-form__group--small"><label for="flat"
+												 class="order-form__label">Квартира</label><input type="text" id="flat"
+												 class="input order-form__input"></div>
+											<div class="order-form__group order-form__group--small"><label
+												 for="entrance" class="order-form__label">Подъезд</label><input
+												 type="text" id="entrance" class="input order-form__input"></div>
+										</div>
+									</fieldset>
+									<fieldset class="order-form__section order-form__who">
+										<legend class="order-form__legend">Время доставки</legend>
+										<div class="order-form__layout">
+											<div
+											 class="order-form__group order-form__group--medium order-form__group--date">
+												<label for="name" class="order-form__label">Выберите дату</label><input
+												 id="date" type="text" class="input order-form__input"></div>
+											<div
+											 class="order-form__group order-form__group--medium order-form__group--time">
+												<label for="phone" class="order-form__label">Выберите
+													время</label><input id="time" type="text"
+												 class="input order-form__input"></div>
+											<div class="order-form__group order-form__group--medium">
+												<div class="checkbox order-form__current-time"><input id="current-time"
+													 type="checkbox" class="visually-hidden"><label for="current-time"
+													 class="checkbox__label">Привезти в ближайшее время</label></div>
+											</div>
+										</div>
+									</fieldset>
+									<fieldset class="order-form__section order-form__who">
+										<legend class="order-form__legend">Способы оплаты</legend>
+										<div class="order-form__layout">
+											<div class="order-form__group order-form__group--custom"><input id="cash"
+												 type="radio" name="payment-type"
+												 class="visually-hidden order-form__custom-checkbox"><label for="cash"
+												 class="order-form__label order-form__label--clickable">Наличными</label>
+											</div>
+											<div class="order-form__group order-form__group--custom"><input id="online"
+												 type="radio" name="payment-type"
+												 class="visually-hidden order-form__custom-checkbox"><label for="online"
+												 class="order-form__label order-form__label--clickable">Картой на
+													сайте</label></div>
+											<div class="order-form__group order-form__group--custom"><input id="card"
+												 type="radio" name="payment-type"
+												 class="visually-hidden order-form__custom-checkbox"><label for="card"
+												 class="order-form__label order-form__label--clickable">Картой
+													курьеру</label></div>
+										</div>
+									</fieldset>
+									<fieldset class="order-form__section order-form__who">
+										<div class="order-form__layout">
+											<div class="order-form__group"><label for="phone"
+												 class="order-form__label">Комментарий при
+													необходимости</label><textarea id="comment" rows="4"
+												 class="order-form__textarea textarea"></textarea></div>
+										</div>
+									</fieldset>
+									<fieldset class="order-form__section bonuses">
+										<legend class="order-form__legend visually-hidden">Информация о бонусах клиента
+										</legend>
+										<div class="bonuses__layout">
+											<div class="bonuses__balance">
+												<p class="bonuses__label"><strong>Баланс бонусных баллов:</strong>
+													<div class="bonuses__data"><svg
+														 xmlns:xlink="http://www.w3.org/1999/xlink">
+															<use xlink:href="./assets/images/icon.svg#icon_blades"></use>
+															</svg>
+														<p>167 бонусов</p>
+													</div>
+												</p>
+											</div>
+											<div class="bonuses__spend">
+												<p class="bonuses__label"><strong>Баланс бонусных баллов:</strong></p>
+												<div class="bonuses__inner">
+													<div class="range-slider bonuses__slider"></div>
+													<div class="bonuses__data bonuses__data--small">
+														<p>167</p><svg xmlns:xlink="http://www.w3.org/1999/xlink">
+															<use xlink:href="./assets/images/icon.svg#icon_blades"></use>
+															</svg>
+													</div><button class="bonuses__spend-button">Списать</button>
+												</div>
+											</div>
+											<div class="bonuses__get">
+												<p class="bonuses__label"><strong>Получите после заказа:</strong></p>
+												<div class="bonuses__data"><svg
+													 xmlns:xlink="http://www.w3.org/1999/xlink">
+														<use xlink:href="./assets/images/icon.svg#icon_blades"></use>
+														</svg>
+													<p>167 бонусов</p>
+												</div>
+											</div>
+										</div>
+									</fieldset>
+									<fieldset class="order-form__section order-form__summary">
+										<legend class="visually-hidden">Промокоды, сумма заказа</legend>
+										<div class="order-form__layout">
+											<div
+											 class="order-form__group order-form__group--custom order-form__group--promocode">
+												<label for="promocode" class="order-form__label">Промокод, (если
+													есть)</label><input id="promocode" type="text"
+												 class="input order-form__input"><button class="order-form__reboot"><svg
+													 xmlns:xlink="http://www.w3.org/1999/xlink">
+														<use xlink:href="./assets/images/icon.svg#icon_reload"></use>
+														</svg></button></div>
+											<div
+											 class="order-form__group order-form__group--custom order-form__group--change">
+												<label for="change" class="order-form__label"> С какой суммы подготовить
+													сдачу:</label><input id="change" type="text"
+												 class="input order-form__input"></div>
+											<div class="order-form__group order-form__group--custom order-form__total">
+												<p class="order-form__total-price order-form__total-price--old"><small>К
+														оплате: 3 345 руб.</small></p>
+												<p class="order-form__total-price order-form__total-price--new">Сумма со
+													скидкой: <span
+													 class="order-form__total-price order-form__total-price--important">2
+														325 руб.</span></p>
+											</div>
+										</div>
+									</fieldset>
+									<fieldset class="order-form__controls order-form__controls--alert">
+										<div class="order-form__layout">
+											<div class="order-form__group">
+												<p class="order-form__alert">Внимание! В настоящее время доставка не
+													осуществляется. Ваш заказ поступит в обработку в 10:30</p>
+												<div class="order-form__controls-inner"><a href=""
+													 class="order-form__back">Вернуться в меню</a><button type="submit"
+													 class="order-form__submit">Оформить заказ</button></div>
+												<p class="order-form__policy"><small>Отправляя настоящую форму, вы даете
+														согласие на обработку своих<a href="#"> персональных
+															данных</a></small></p>
+											</div>
+										</div>
+									</fieldset>
+								</form>
+							</div>
+							<div id="tab-2"></div>
+						</div>
+					</div>
+				</div>
+			</main>
+			<footer class="footer">
+				<div class="container">
+					<div class="footer__inner">
+						<div class="footer__top"><a href="#" class="footer__logo"><img
+								 src="assets/images/logo_white.png" alt="сытый самурай" width="103" height="90"
+								 class="footer__logo-picture" /></a>
+							<ul class="info footer__info">
+								<li class="info__item info__item--address"><svg
+									 xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="./assets/images/icon.svg#icon_pin"></use></svg>Сургут,
+									Пр.Пролетарский 10/3</li>
+								<li class="info__item info__item--phone"><svg
+									 xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="./assets/images/icon.svg#icon_phone"></use>
+										</svg>+7(3462)269-57-58</li>
+								<li class="info__item info__item--work-time"><svg
+									 xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="./assets/images/icon.svg#icon_timer"></use></svg>Работаем с
+									10:30 - 23:30</li>
+							</ul>
+							<ul class="socials socials--footer">
+								<li class="socials__item"><a href="#" class="socials__link socials__link--vk"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_vk"></use></svg></a></li>
+								<li class="socials__item"><a href="#" class="socials__link socials__link--fb"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_facebook"></use></svg></a>
+								</li>
+								<li class="socials__item"><a href="#" class="socials__link socials__link--inst"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_instagram"></use></svg></a>
+								</li>
+								<li class="socials__item"><a href="#" class="socials__link socials__link--ok"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_odnoklassniki"></use>
+											</svg></a></li>
+							</ul>
+						</div>
+						<div class="footer__bottom">
+							<div class="footer__copyrights">&copy; 2011-2019 ООО «СМАЙЛ»,</div>
+							<div class="footer__requisites">ИНН 860238152024, ОГРН 318861700002247. </div>
+							<div class="footer__policy"><a href="#">Политика конфиденциальности</a></div>
+							<div class="footer__madeby">Разработка и продвижение:<a href="#" target="_blank"><img
+									 src="assets/images/logo_dev.png" alt="Логотип А1-Эксперт" width="114"
+									 height="42" /></a></div>
+						</div>
+					</div>
+				</div><template id="city">
+					<div class="city-choose">
+						<h2 class="city-choose__title">Выберите город</h2>
+						<form class="city-choose__form">
+							<div class="checkbox"><input type="checkbox" name="city" id="surgut" value="surgut"
+								 class="visually-hidden" /><label for="surgut" class="checkbox__label">Сургут</label>
+							</div>
+							<div class="checkbox"><input type="checkbox" name="city" id="vartovsk" value="vartovsk"
+								 class="visually-hidden" /><label for="vartovsk"
+								 class="checkbox__label">Нижневартовск</label></div>
+							<div class="checkbox"><input type="checkbox" name="city" id="lyantor" value="lyantor"
+								 class="visually-hidden" /><label for="lyantor" class="checkbox__label">Лянтор</label>
+							</div>
+							<div class="checkbox"><input type="checkbox" name="city" id="pokachi" value="pokachi"
+								 class="visually-hidden" /><label for="pokachi" class="checkbox__label">Покачи</label>
+							</div>
+						</form>
+					</div>
+				</template>
+			</footer>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.js"></script>
+		<script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+		<script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+		<script src="assets/scripts/main.js"></script>
+	</body>
+
+</html>

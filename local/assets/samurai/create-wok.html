@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link sizes="192x192" href="/favicon-192x192.png" rel="icon" type="image/png">
+		<link sizes="160x160" href="/favicon-160x160.png" rel="icon" type="image/png">
+		<link sizes="96x96" href="/favicon-96x96.png" rel="icon" type="image/png">
+		<link sizes="16x16" href="/favicon-16x16.png" rel="icon" type="image/png">
+		<link sizes="32x32" href="/favicon-32x32.png" rel="icon" type="image/png">
+		<title>Собери свой WOK</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.css" rel="stylesheet">
+		<link href="./assets/styles/app.min.css" rel="stylesheet">
+	</head>
+
+	<body class="page">
+		<div class="wrapper">
+			<div class="layout"></div>
+			<header class="header">
+				<div class="header__top">
+					<div class="header-mobile-top">
+						<div class="container">
+							<ul class="header-mobile-top__list">
+								<li class="header-mobile-top__item"><svg xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="./assets/images/icon.svg#icon_pin"></use></svg>Сургут</li>
+								<li class="header-mobile-top__item"><svg xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="./assets/images/icon.svg#icon_phone"></use>
+										</svg>+7(3462)269-57-58</li>
+								<li class="header-mobile-top__item"><a href="#"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_user"></use></svg></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="container header__container">
+						<div class="logo header__logo"><a href="/" class="logo__link"><img
+								 src="assets/images/logo_colored.png" alt="Сытый самурай" width="129"
+								 height="113" /></a></div>
+						<div class="header__inner">
+							<div class="header__content header__content--top">
+								<nav class="menu">
+									<ul class="menu__list">
+										<li class="menu__item"><a href="stocks.html" class="menu__link">Акции</a></li>
+										<li class="menu__item"><a href="delivery.html" class="menu__link">Условия
+												доставки</a></li>
+										<li class="menu__item"><a href="about.html" class="menu__link">О нас</a></li>
+										<li class="menu__item"><a href="feedback.html" class="menu__link">Отзывы</a>
+										</li>
+										<li class="menu__item"><a href="#" class="menu__link">Вакансии</a></li>
+										<li class="menu__item"><a href="#" class="menu__link">Контакты</a></li>
+									</ul>
+								</nav>
+								<ul class="controls header__controls">
+									<li class="controls__item">
+										<p class="controls__element controls__element--bonus"><svg
+											 xmlns:xlink="http://www.w3.org/1999/xlink">
+												<use xlink:href="./assets/images/icon.svg#icon_blades"></use></svg>150
+											бонусов</p>
+									</li>
+									<li class="controls__item"><a href="#"
+										 class="controls__element controls__element--account"><svg
+											 xmlns:xlink="http://www.w3.org/1999/xlink">
+												<use xlink:href="./assets/images/icon.svg#icon_user"></use></svg>Личный
+											кабинет</a></li>
+								</ul>
+							</div>
+							<div class="header__content header__content--mobile"><button
+								 class="header__menu-toggler"></button><a href="/" class="header__mobile-logo"><img
+									 src="assets/images/logo_colored.png" alt="Сытый самурай" width="129"
+									 height="113" /></a>
+								<ul class="info header__info">
+									<li class="info__item info__item--address info__item--invert"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_pin"></use></svg>Доставка
+										еды<a href="#" class="info__city-name">&nbsp; в Сургуте</a></li>
+									<li class="info__item info__item--phone info__item--invert"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_phone"></use>
+											</svg>+7(3462)269-57-58</li>
+									<li class="info__item info__item--work-time info__item--invert"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_timer"></use></svg>Принимаем
+										заказы с<br />с 10:30 - 23:30</li>
+								</ul>
+								<div class="cart-header header__cart">
+									<div class="cart-header__info">
+										<p class="cart-header__total-price">100 475 ₽</p>
+										<p class="cart-header__total-quantity">1 товар</p>
+									</div><a href="#" class="cart-header__link"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_cart"></use></svg>Корзина</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<nav class="submenu">
+					<div class="container">
+						<ul class="submenu__list">
+							<li class="submenu__item"><a href="detailed.html" class="submenu__link">Роллы</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Суши</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Суши-сеты</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Пицца</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Кесадии</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Лапша</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Горячее</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Салаты</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Десерты</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Соусы</a></li>
+							<li class="submenu__item"><a href="#" class="submenu__link">Акции</a></li>
+							<li class="submenu__item submenu__item--toggler"><button type="button"
+								 class="submenu__toggler">burger_menu</button>
+								<ul class="submenu__responsive-list"></ul>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<main class="main">
+				<div class="page-intro page-intro--background">
+					<div class="container page-intro__container">
+						<h1 class="page-title">Лапша в коробочках</h1>
+						<ul class="breadcrumbs page-intro__breadcrumbs">
+							<li class="breadcrumbs__item"><a href="/" class="breadcrumbs__link">Главная</a></li>
+							<li class="breadcrumbs__item"><a class="breadcrumbs__link">Каталог</a></li>
+						</ul>
+					</div>
+				</div>
+				<section class="section create-wok">
+					<div class="container"></div>
+					<div class="section__layout create-wok__layout">
+						<ul class="create-wok__grid">
+							<li class="create-wok__grid-item">
+								<article class="create-wok__block">
+									<h3 class="create-wok__subtitle">Выберите основу<span
+										 class="create-wok__divider">/</span><span class="create-wok__price">134
+											Р</span></h3>
+									<form action="">
+										<ul class="create-wok__list">
+											<li class="create-wok__item"><input id="1_01" type="checkbox" name="base"
+												 class="visually-hidden"><label for="1_01"
+												 class="create-wok__label"><strong class="create-wok__name">Удон
+														(пшеничная лапша)</strong><small
+													 class="create-wok__description">+ свежие овощи</small></label></li>
+											<li class="create-wok__item"><input id="1_02" type="checkbox" name="base"
+												 class="visually-hidden"><label for="1_02"
+												 class="create-wok__label"><strong class="create-wok__name">Гречневая
+														лапша</strong><small class="create-wok__description">+ свежие
+														овощи</small></label></li>
+											<li class="create-wok__item"><input id="1_03" type="checkbox" name="base"
+												 class="visually-hidden"><label for="1_03"
+												 class="create-wok__label"><strong class="create-wok__name">Рисовая
+														лапша</strong><small class="create-wok__description">морковь,
+														стручковая фасоль, шампиньоны, болгарский перец, цукини, лук
+														репчатый, брокколи</small></label></li>
+											<li class="create-wok__item"><input id="1_04" type="checkbox" name="base"
+												 class="visually-hidden"><label for="1_04"
+												 class="create-wok__label"><strong class="create-wok__name">Удон
+														(пшеничная лапша)</strong><small
+													 class="create-wok__description">+ свежие овощи</small></label></li>
+											<li class="create-wok__item"><input id="1_05" type="checkbox" name="base"
+												 class="visually-hidden"><label for="1_05"
+												 class="create-wok__label"><strong class="create-wok__name">Овощной
+														микс</strong><small class="create-wok__description">морковь,
+														стручковая фасоль, шампиньоны, болгарский перец, цукини, лук
+														репчатый, брокколи</small></label></li>
+										</ul>
+									</form>
+								</article>
+							</li>
+							<li class="create-wok__grid-item">
+								<article class="create-wok__block">
+									<h3 class="create-wok__subtitle">Выберите начинку</h3>
+									<form action="">
+										<ul class="create-wok__list">
+											<li class="create-wok__item"><input id="2_01" type="checkbox" name="base"
+												 class="visually-hidden"><label for="2_01"
+												 class="create-wok__label"><strong class="create-wok__name">Жареное
+														Яйцо</strong><span class="create-wok__divider">/</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+											<li class="create-wok__item"><input id="2_02" type="checkbox" name="base"
+												 class="visually-hidden"><label for="2_02"
+												 class="create-wok__label"><strong
+													 class="create-wok__name">Кукуруза</strong><span
+													 class="create-wok__divider">/</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+											<li class="create-wok__item"><input id="2_03" type="checkbox" name="base"
+												 class="visually-hidden"><label for="2_03"
+												 class="create-wok__label"><strong class="create-wok__name">
+														Кунжут</strong><span class="create-wok__divider">/</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+											<li class="create-wok__item"><input id="2_04" type="checkbox" name="base"
+												 class="visually-hidden"><label for="2_04"
+												 class="create-wok__label"><strong
+													 class="create-wok__name">Овощи</strong><span
+													 class="create-wok__divider">/</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+											<li class="create-wok__item"><input id="2_05" type="checkbox" name="base"
+												 class="visually-hidden"><label for="2_05"
+												 class="create-wok__label"><strong
+													 class="create-wok__name">Укроп</strong><span
+													 class="create-wok__divider">/</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+											<li class="create-wok__item"><input id="2_06" type="checkbox" name="base"
+												 class="visually-hidden"><label for="2_06"
+												 class="create-wok__label"><strong
+													 class="create-wok__name">Чеснок</strong><span
+													 class="create-wok__divider">/</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+											<li class="create-wok__item"><input id="2_07" type="checkbox" name="base"
+												 class="visually-hidden"><label for="2_07"
+												 class="create-wok__label"><strong
+													 class="create-wok__name">Укроп</strong><span
+													 class="create-wok__divider">/</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+											<li class="create-wok__item"><input id="2_08" type="checkbox" name="base"
+												 class="visually-hidden"><label for="2_08"
+												 class="create-wok__label"><strong class="create-wok__name">Грибы
+														Шиитаке</strong><span class="create-wok__divider">/</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+											<li class="create-wok__item"><input id="2_09" type="checkbox" name="base"
+												 class="visually-hidden"><label for="2_09"
+												 class="create-wok__label"><strong class="create-wok__name">Грибы
+														Шампиньоны</strong><span
+													 class="create-wok__divider">/</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+											<li class="create-wok__item"><input id="2_10" type="checkbox" name="base"
+												 class="visually-hidden"><label for="2_10"
+												 class="create-wok__label"><strong class="create-wok__name"> Ананас
+														Консервир</strong><span
+													 class="create-wok__divider">/</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+										</ul>
+									</form>
+								</article>
+							</li>
+							<li class="create-wok__grid-item">
+								<article class="create-wok__block">
+									<h3 class="create-wok__subtitle">Дополнительно</h3>
+									<form action="">
+										<ul class="create-wok__list">
+											<li class="create-wok__item"><input id="3_01" type="checkbox" name="base"
+												 class="visually-hidden"><label for="3_01"
+												 class="create-wok__label"><strong class="create-wok__name">Жареное
+														Яйцо</strong><span class="create-wok__divider"> /</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+											<li class="create-wok__item"><input id="3_02" type="checkbox" name="base"
+												 class="visually-hidden"><label for="3_02"
+												 class="create-wok__label"><strong class="create-wok__name">
+														Кукуруза</strong><span class="create-wok__divider">
+														/</span><span class="create-wok__price">134 ₽</span></label>
+											</li>
+											<li class="create-wok__item"><input id="3_03" type="checkbox" name="base"
+												 class="visually-hidden"><label for="3_03"
+												 class="create-wok__label"><strong
+													 class="create-wok__name">Кунжут</strong><span
+													 class="create-wok__divider"> /</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+											<li class="create-wok__item"><input id="3_04" type="checkbox" name="base"
+												 class="visually-hidden"><label for="3_04"
+												 class="create-wok__label"><strong
+													 class="create-wok__name">Овощи</strong><span
+													 class="create-wok__divider"> /</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+											<li class="create-wok__item"><input id="3_05" type="checkbox" name="base"
+												 class="visually-hidden"><label for="3_05"
+												 class="create-wok__label"><strong
+													 class="create-wok__name">Укроп</strong><span
+													 class="create-wok__divider"> /</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+											<li class="create-wok__item"><input id="3_06" type="checkbox" name="base"
+												 class="visually-hidden"><label for="3_06"
+												 class="create-wok__label"><strong
+													 class="create-wok__name">Чеснок</strong><span
+													 class="create-wok__divider"> /</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+											<li class="create-wok__item"><input id="3_07" type="checkbox" name="base"
+												 class="visually-hidden"><label for="3_07"
+												 class="create-wok__label"><strong class="create-wok__name"> Грибы
+														Шиитаке</strong><span class="create-wok__divider"> /</span><span
+													 class="create-wok__price">134 ₽</span></label></li>
+											<li class="create-wok__item"><input id="3_08" type="checkbox" name="base"
+												 class="visually-hidden"><label for="3_08"
+												 class="create-wok__label"><strong class="create-wok__name">Грибы
+														Шампиньоны</strong><span class="create-wok__divider">
+														/</span><span class="create-wok__price">134 ₽</span></label>
+											</li>
+											<li class="create-wok__item"><input id="3_09" type="checkbox" name="base"
+												 class="visually-hidden"><label for="3_09"
+												 class="create-wok__label"><strong class="create-wok__name">Ананас
+														Консервир</strong><span class="create-wok__divider">
+														/</span><span class="create-wok__price">134 ₽</span></label>
+											</li>
+										</ul>
+									</form>
+								</article>
+							</li>
+							<li class="create-wok__grid-item">
+								<article class="create-wok__block">
+									<h3 class="create-wok__subtitle">Выберите основу /<span
+										 class="create-wok__price">134 Р</span></h3>
+									<form action="">
+										<ul class="create-wok__list">
+											<li class="create-wok__item"><input id="4_01" type="checkbox" name="base"
+												 class="visually-hidden"><label for="4_01"
+												 class="create-wok__label"><strong class="create-wok__name">Удон
+														(пшеничная лапша)</strong><small
+													 class="create-wok__description">+ свежие овощи</small></label></li>
+											<li class="create-wok__item"><input id="4_02" type="checkbox" name="base"
+												 class="visually-hidden"><label for="4_02"
+												 class="create-wok__label"><strong class="create-wok__name">Гречневая
+														лапша</strong><small class="create-wok__description">+ свежие
+														овощи</small></label></li>
+											<li class="create-wok__item"><input id="4_03" type="checkbox" name="base"
+												 class="visually-hidden"><label for="4_03"
+												 class="create-wok__label"><strong class="create-wok__name">Рисовая
+														лапша</strong><small class="create-wok__description">морковь,
+														стручковая фасоль, шампиньоны, болгарский перец, цукини, лук
+														репчатый, брокколи</small></label></li>
+											<li class="create-wok__item"><input id="4_04" type="checkbox" name="base"
+												 class="visually-hidden"><label for="4_04"
+												 class="create-wok__label"><strong class="create-wok__name">Удон
+														(пшеничная лапша)</strong><small
+													 class="create-wok__description">+ свежие овощи</small></label></li>
+											<li class="create-wok__item"><input id="4_05" type="checkbox" name="base"
+												 class="visually-hidden"><label for="4_05"
+												 class="create-wok__label"><strong class="create-wok__name">Овощной
+														микс</strong><small class="create-wok__description">морковь,
+														стручковая фасоль, шампиньоны, болгарский перец, цукини, лук
+														репчатый, брокколи</small></label></li>
+										</ul>
+									</form>
+								</article>
+							</li>
+						</ul>
+						<div class="create-wok__output">
+							<h2 class="create-wok__title">Ваша коробочка:</h2>
+							<div class="create-wok__output-picture"><img src="assets/images/ur-wok.png" alt="ur wok">
+							</div>
+							<form action="" class="create-wok__output-form">
+								<div class="create-wok__output-item">
+									<p class="create-wok__output-info"><strong class="create-wok__name">Удон (пшеничная
+											лапша)</strong><small class="create-wok__description">+ свежие овощи</small>
+									</p>
+									<p class="create-wok__output-sum"><span class="create-wok__value">576 <span
+											 class="currency">₽</span></span></p>
+								</div>
+								<div class="create-wok__output-item">
+									<p class="create-wok__output-info"><strong class="create-wok__name">Кунжут
+											обжаренный</strong></p>
+									<div class="create-wok__output-controls counter-control"><button type="button"
+										 class="counter-control__button counter-control__button--der">-</button><input
+										 type="text" value="1" readonly class="counter-control__value"><button
+										 type="button"
+										 class="counter-control__button counter-control__button--incr">+</button></div>
+									<p class="create-wok__output-sum"><span class="create-wok__value">32576 <span
+											 class="currency">₽</span></span></p>
+								</div>
+								<div class="create-wok__output-item">
+									<p class="create-wok__output-info"><strong
+										 class="create-wok__name">Морепродукты</strong></p>
+									<div class="create-wok__output-controls counter-control"><button type="button"
+										 class="counter-control__button counter-control__button--der">-</button><input
+										 type="text" value="1" readonly class="counter-control__value"><button
+										 type="button"
+										 class="counter-control__button counter-control__button--incr">+</button></div>
+									<p class="create-wok__output-sum"><span class="create-wok__value">1576 <span
+											 class="currency">₽</span></span></p>
+								</div>
+								<div class="create-wok__result">
+									<div class="counter-control counter-control--big"><button type="button"
+										 class="counter-control__button counter-control__button--der">-</button><input
+										 type="text" value="1" readonly class="counter-control__value"><button
+										 type="button"
+										 class="counter-control__button counter-control__button--incr">+</button></div>
+									<div class="create-wok__result-text"><span
+										 class="create-wok__result-label">Итого:</span>
+										<div class="create-wok__price"><span class="create-wok__value">12873 <span
+												 class="currency">₽</span></span></div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+			</main>
+			<footer class="footer">
+				<div class="container">
+					<div class="footer__inner">
+						<div class="footer__top"><a href="#" class="footer__logo"><img
+								 src="assets/images/logo_white.png" alt="сытый самурай" width="103" height="90"
+								 class="footer__logo-picture" /></a>
+							<ul class="info footer__info">
+								<li class="info__item info__item--address"><svg
+									 xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="./assets/images/icon.svg#icon_pin"></use></svg>Сургут,
+									Пр.Пролетарский 10/3</li>
+								<li class="info__item info__item--phone"><svg
+									 xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="./assets/images/icon.svg#icon_phone"></use>
+										</svg>+7(3462)269-57-58</li>
+								<li class="info__item info__item--work-time"><svg
+									 xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="./assets/images/icon.svg#icon_timer"></use></svg>Работаем с
+									10:30 - 23:30</li>
+							</ul>
+							<ul class="socials socials--footer">
+								<li class="socials__item"><a href="#" class="socials__link socials__link--vk"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_vk"></use></svg></a></li>
+								<li class="socials__item"><a href="#" class="socials__link socials__link--fb"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_facebook"></use></svg></a>
+								</li>
+								<li class="socials__item"><a href="#" class="socials__link socials__link--inst"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_instagram"></use></svg></a>
+								</li>
+								<li class="socials__item"><a href="#" class="socials__link socials__link--ok"><svg
+										 xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="./assets/images/icon.svg#icon_odnoklassniki"></use>
+											</svg></a></li>
+							</ul>
+						</div>
+						<div class="footer__bottom">
+							<div class="footer__copyrights">&copy; 2011-2019 ООО «СМАЙЛ»,</div>
+							<div class="footer__requisites">ИНН 860238152024, ОГРН 318861700002247. </div>
+							<div class="footer__policy"><a href="#">Политика конфиденциальности</a></div>
+							<div class="footer__madeby">Разработка и продвижение:<a href="#" target="_blank"><img
+									 src="assets/images/logo_dev.png" alt="Логотип А1-Эксперт" width="114"
+									 height="42" /></a></div>
+						</div>
+					</div>
+				</div><template id="city">
+					<div class="city-choose">
+						<h2 class="city-choose__title">Выберите город</h2>
+						<form class="city-choose__form">
+							<div class="checkbox"><input type="checkbox" name="city" id="surgut" value="surgut"
+								 class="visually-hidden" /><label for="surgut" class="checkbox__label">Сургут</label>
+							</div>
+							<div class="checkbox"><input type="checkbox" name="city" id="vartovsk" value="vartovsk"
+								 class="visually-hidden" /><label for="vartovsk"
+								 class="checkbox__label">Нижневартовск</label></div>
+							<div class="checkbox"><input type="checkbox" name="city" id="lyantor" value="lyantor"
+								 class="visually-hidden" /><label for="lyantor" class="checkbox__label">Лянтор</label>
+							</div>
+							<div class="checkbox"><input type="checkbox" name="city" id="pokachi" value="pokachi"
+								 class="visually-hidden" /><label for="pokachi" class="checkbox__label">Покачи</label>
+							</div>
+						</form>
+					</div>
+				</template>
+			</footer>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.0.2/nouislider.min.js"></script>
+		<script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+		<script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+		<script src="assets/scripts/main.js"></script>
+	</body>
+
+</html>

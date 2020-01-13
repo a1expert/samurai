@@ -10,6 +10,7 @@ require_once('include/functions.php');
         'PHPMailer\PHPMailer\Exception' => '/local/php_interface/include/PHPMailer/src/Exception.php',
         'PHPMailer\PHPMailer\SMTP' => '/local/php_interface/include/PHPMailer/src/SMTP.php',
         "A1expert\Cities" => "/local/php_interface/include/a1expert/cities.php",
+        'A1expert\Basket' => '/local/php_interface/include/a1expert/Basket.php'
     )
 );
 

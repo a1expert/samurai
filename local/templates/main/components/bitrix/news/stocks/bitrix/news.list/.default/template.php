@@ -11,7 +11,7 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-
+// ShowRes($arResult);
 ?>
 <div class="container">
 	<ul class="stocks">
@@ -20,7 +20,7 @@ $this->setFrameMode(true);
 		$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
 		$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));?>
 		<li class="stocks__item" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-			<article class="stock" style="background-image: url(<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>)">
+			<article class="stock" style="background-image: url(<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>)" data-url="<?=$arItem['DETAIL_PAGE_URL'];?>">
 			<?if(!empty($arItem['FIELDS']['DATE_ACTIVE_TO']))
 			{?>
 				<p class="stock__label"><small class="stock__date">До <?=$arItem['FIELDS']['DATE_ACTIVE_TO']?></small></p>

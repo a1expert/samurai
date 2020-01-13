@@ -1,5 +1,4 @@
-<?
-if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 /** @var CBitrixComponent $this */
 /** @var array $arParams */
 /** @var array $arResult */
@@ -9,10 +8,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 /** @global CDatabase $DB */
 /** @global CUser $USER */
 /** @global CMain $APPLICATION */
-
 /** @global CIntranetToolbar $INTRANET_TOOLBAR */
 global $INTRANET_TOOLBAR;
-
 use Bitrix\Main\Context,
 	Bitrix\Main\Type\DateTime,
 	Bitrix\Main\Loader,
@@ -20,14 +17,12 @@ use Bitrix\Main\Context,
 	A1expert\Fixer;
 $fixer = new Fixer();
 CPageOption::SetOptionString("main", "nav_page_in_session", "N");
-
 if(!isset($arParams["CACHE_TIME"]))
 	$arParams["CACHE_TIME"] = 36000000;
 $arParams["IBLOCK_TYPE"] = trim($arParams["IBLOCK_TYPE"]);
 $arParams["IBLOCK_ID"] = intval($arParams["IBLOCK_ID"]);
 $arParams["PARENT_SECTION"] = intval($arParams["PARENT_SECTION"]);
 $arParams["INCLUDE_SUBSECTIONS"] = $arParams["INCLUDE_SUBSECTIONS"]!="N";
-
 $arParams["SORT_BY1"] = trim($arParams["SORT_BY1"]);
 if(strlen($arParams["SORT_BY1"])<=0)
 {
@@ -35,13 +30,12 @@ if(strlen($arParams["SORT_BY1"])<=0)
 	$arParams["SORT_ORDER1"]="ASC";
 }
 if(!is_array($arParams["FIELD_CODE"]))
-	$arParams["FIELD_CODE"] = array();
+	$arParams["FIELD_CODE"] = [];
 foreach($arParams["FIELD_CODE"] as $key=>$val)
 	if(!$val)
 		unset($arParams["FIELD_CODE"][$key]);
-
 if(!is_array($arParams["PROPERTY_CODE"]))
-	$arParams["PROPERTY_CODE"] = array();
+	$arParams["PROPERTY_CODE"] = [];
 foreach($arParams["PROPERTY_CODE"] as $key=>$val)
 	if($val==="")
 		unset($arParams["PROPERTY_CODE"][$key]);
@@ -54,20 +48,16 @@ $arParams["SET_META_DESCRIPTION"] = (isset($arParams["SET_META_DESCRIPTION"]) &&
 $arParams["ADD_SECTIONS_CHAIN"] = $arParams["ADD_SECTIONS_CHAIN"]!="N"; //Turn on by default
 $arParams["INCLUDE_IBLOCK_INTO_CHAIN"] = $arParams["INCLUDE_IBLOCK_INTO_CHAIN"]!="N";
 $arParams["STRICT_SECTION_CHECK"] = (isset($arParams["STRICT_SECTION_CHECK"]) && $arParams["STRICT_SECTION_CHECK"] === "Y");
-
-
 if($this->startResultCache(false, array(($arParams["CACHE_GROUPS"]==="N"? false: $USER->GetGroups()), $arNavigation)))
 {
 	if(!Loader::includeModule("iblock") && !Loader::includeModule("catalog"))
 	{
 		$this->abortResultCache();
 		ShowError(GetMessage("IBLOCK_MODULE_NOT_INSTALLED"));
-		ShowError(" or catalog modul not installed");
+		ShowError(" or catalog module not installed");
 		return;
 	}
-
-	
-	$rsIBlock = CIBlock::GetList(array(), array(
+	$rsIBlock = CIBlock::GetList([], array(
 		"ACTIVE" => "Y",
 		"ID" => $arParams["IBLOCK_ID"],
 	));
@@ -85,25 +75,21 @@ if($this->startResultCache(false, array(($arParams["CACHE_GROUPS"]==="N"? false:
 		"IBLOCK_SECTION_ID",
 		"NAME",
 		"PREVIEW_PICTURE",
+		'DETAIL_PICTURE',
 		'CATALOG_PRICE_1'
 	));
-	$bGetProperty = count($arParams["PROPERTY_CODE"])>0;
+	$bGetProperty = count($arParams["PROPERTY_CODE"]) > 0;
 	if($bGetProperty)
-		$arSelect[]="PROPERTY_*";
-	$arFilter = array (
-		"IBLOCK_ID" => $arResult["ID"],
-		"IBLOCK_LID" => SITE_ID,
-		"ACTIVE" => "Y",
-	);
-
-	$PARENT_SECTION = CIBlockFindTools::GetSectionID($arParams["PARENT_SECTION"], $arParams["PARENT_SECTION_CODE"], array("GLOBAL_ACTIVE" => "Y", "IBLOCK_ID" => $arResult["ID"]));
+		$arSelect[] = "PROPERTY_*";
+	$arFilter = ["IBLOCK_ID" => $arResult["ID"], "IBLOCK_LID" => SITE_ID, "ACTIVE" => "Y"];
+	$PARENT_SECTION = CIBlockFindTools::GetSectionID($arParams["PARENT_SECTION"], $arParams["PARENT_SECTION_CODE"], ["GLOBAL_ACTIVE" => "Y", "IBLOCK_ID" => $arResult["ID"]]);
 	$arParams["PARENT_SECTION"] = $PARENT_SECTION;
-	if($arParams["PARENT_SECTION"]>0)
+	if($arParams["PARENT_SECTION"] > 0)
 	{
 		$arFilter["SECTION_ID"] = $arParams["PARENT_SECTION"];
 		if($arParams["INCLUDE_SUBSECTIONS"])
 			$arFilter["INCLUDE_SUBSECTIONS"] = "Y";
-		$arResult["SECTION"]= array("PATH" => array());
+		$arResult["SECTION"]= ["PATH" => []];
 		$rsPath = CIBlockSection::GetNavChain($arResult["ID"], $arParams["PARENT_SECTION"]);
 		$rsPath->SetUrlTemplates("", $arParams["SECTION_URL"], $arParams["IBLOCK_URL"]);
 		while($arPath = $rsPath->GetNext())
@@ -116,26 +102,24 @@ if($this->startResultCache(false, array(($arParams["CACHE_GROUPS"]==="N"? false:
 		$arResult["IPROPERTY_VALUES"] = $ipropValues->getValues();
 	}
 	else
-	{
 		$arResult["SECTION"]= false;
-	}
-	
 	$arSort = array($arParams["SORT_BY1"]=>$arParams["SORT_ORDER1"], $arParams["SORT_BY2"]=>$arParams["SORT_ORDER2"]);
-	$arResult["ITEMS"] = array();
-	$arResult["ELEMENTS"] = array();
+	$arResult["ITEMS"] = [];
+	$arResult["ELEMENTS"] = [];
 	$rsElement = CIBlockElement::GetList($arSort, $arFilter, false, $arNavParams, $arSelect);
 	$rsElement->SetUrlTemplates($arParams["DETAIL_URL"], "", $arParams["IBLOCK_URL"]);
 	while($obElement = $rsElement->GetNextElement())
 	{
 		$arItem = $obElement->GetFields();
-		$arButtons = CIBlock::GetPanelButtons($arItem["IBLOCK_ID"], $arItem["ID"], 0, array("SECTION_BUTTONS"=>false, "SESSID"=>false));
+		$arButtons = CIBlock::GetPanelButtons($arItem["IBLOCK_ID"], $arItem["ID"], 0, ["SECTION_BUTTONS"=>false, "SESSID"=>false]);
 		$arItem["EDIT_LINK"] = $arButtons["edit"]["edit_element"]["ACTION_URL"];
 		$arItem["DELETE_LINK"] = $arButtons["edit"]["delete_element"]["ACTION_URL"];
-		$arItem["FIELDS"] = array();
+		$arItem["FIELDS"] = [];
 		$arItem['PREVIEW_PICTURE'] = (!empty($arItem['PREVIEW_PICTURE'])) ? \CFile::GetPath($arItem['PREVIEW_PICTURE']) : '';
+		$arItem['DETAIL_PICTURE'] = (!empty($arItem['DETAIL_PICTURE'])) ? \CFile::GetPath($arItem['DETAIL_PICTURE']) : '';
 		if($bGetProperty)
 			$arItem["PROPERTIES"] = $obElement->GetProperties();
-		$arItem["DISPLAY_PROPERTIES"]=array();
+		$arItem["DISPLAY_PROPERTIES"] = [];
 		foreach($arParams["PROPERTY_CODE"] as $pid)
 		{
 			$prop = &$arItem["PROPERTIES"][$pid];
@@ -144,46 +128,70 @@ if($this->startResultCache(false, array(($arParams["CACHE_GROUPS"]==="N"? false:
 		}
 		$dbSections = CIBlockElement::GetElementGroups($arItem['ID'], true, ['ID']);
 		while ($itemSection = $dbSections->Fetch())
-		{
 			$arItem['SECTIONS_ID'][] = $itemSection['ID'];
+		$arItem['PRICES'] = CCatalogProduct::GetOptimalPrice((int)$arItem['ID'], 1, $USER->GetUserGroupArray(), 'N', [], $this->getSiteId(), []);
+		if(!empty($arItem['PRICES']['DISCOUNT']))
+		{
+			$arItem['PRICES']['IS_DISCOUNT'] = true;
+			$arItem['PRICES']['DISCOUNT_PRICE'] = round($arItem['PRICES']['DISCOUNT_PRICE']);
+			$arItem['PRICES']['RESULT_PRICE']['DISCOUNT_PRICE'] = round($arItem['PRICES']['RESULT_PRICE']['DISCOUNT_PRICE']);
 		}
+		else
+			$arItem['PRICES']['IS_DISCOUNT'] = false;
 		$arResult["ITEMS"][] = $arItem;
 		$arResult["ELEMENTS"][] = $arItem["ID"];
 	}
-
 	//Товары с торговыми предложениями
 	$elementsWithOffers = []; // массив ID товаров
 	//Если инфоблоков с товарами будет больше чем один - надо убрать второй параметр $arParams['IBLOCK_ID'] вообще.
-	$rsOffers = CCatalogSKU::getExistOffers($arResult['ELEMENTS'],  $arParams['IBLOCK_ID']);
+	$rsOffers = CCatalogSKU::getExistOffers($arResult['ELEMENTS'], $arParams['IBLOCK_ID']);
 	foreach ($rsOffers as $key => $value)
-	{
 		if($value)
 			$elementsWithOffers[] = $key;
-	}
-	$offersList = CCatalogSKU::getOffersList($elementsWithOffers, $iblockID = $arParams['IBLOCK_ID'], $skuFilter = [], $fields = ['CATALOG_PRICE_1'], $propertyFilter = ['ID'=>[9]]);
-	
+	$offersList = CCatalogSKU::getOffersList($elementsWithOffers, $iblockID = $arParams['IBLOCK_ID'], $skuFilter = [], $fields = ['CATALOG_PRICE_1'], $propertyFilter = ['ID'=>[9,76]]);
 	foreach ($offersList as $key => $item)
-	{
 		foreach ($item as $value)
-		{			
 			if($value['PROPERTIES']['CITY']['VALUE'] == $_COOKIE['city'])
 				$sortedOffers[$key] = $value;
-		}
-	}
-
 	$arResult['filters'] = [];
+	//состав (белки жиры итд)
+	$compound = ['PROTEINS', 'FATS', 'CARBOHYDRATES', 'CALORIES'];
+	$rsSections = $fixer->GetSections([], ['IBLOCK_ID'=>$arParams['IBLOCK_ID']], false, $arParams['SECTIONS_PROPERTY_CODE'], false);
+	$mainPageSections = [];
+	foreach ($rsSections as $i => $section)
+	{
+		$mainPageSections[$section['ID']] = $section;
+		$mainPageSections[$section['ID']]['ITEMS_KEY'] = [];
+	}
 	foreach ($arResult['ITEMS'] as $key => $arItem)
 	{
 		if(array_key_exists($arItem['ID'], $sortedOffers))
 		{
-			$arResult['ITEMS'][$key]['CATALOG_PRICE_1'] = $sortedOffers[$arItem['ID']]['CATALOG_PRICE_1'];
-			$arResult['ITEMS'][$key]['OFFERS'] = $offersList[$arItem['ID']];
+			$offer = $sortedOffers[$arItem['ID']];
+			$offer['PRICES'] = CCatalogProduct::GetOptimalPrice((int)$offer['ID'], 1, $USER->GetUserGroupArray(), 'N', [], $this->getSiteId(), []);
+			if(!empty($offer['PRICES']['DISCOUNT']))
+			{
+				$offer['PRICES']['IS_DISCOUNT'] = true;
+				$offer['PRICES']['DISCOUNT_PRICE'] = round($offer['PRICES']['DISCOUNT_PRICE']);
+				$offer['PRICES']['RESULT_PRICE']['DISCOUNT_PRICE'] = round($offer['PRICES']['RESULT_PRICE']['DISCOUNT_PRICE']);
+			}
+			else
+				$arItem['PRICES']['IS_DISCOUNT'] = false;
+			$arResult['ITEMS'][$key]['OFFERS'][] = $offer;
 		}
 		foreach ($arItem['PROPERTIES']['FILTER']['VALUE'] as $value)
 			$arResult['filters'][$value] = $value;
+		/* состав - перебираем массив и смотрим заполненность соответствующего свойства, если не пустое,
+		то закидиваем это свойство в новый массив в элементе чёбы потом проверить что он не пустой, а то одинэсник заказчика и сам заказчик долбанавты и не могут
+		нормально добавить в 1с эти свойства */
+		foreach ($compound as $v)
+			if(!empty($arItem['DISPLAY_PROPERTIES'][$v]['DISPLAY_VALUE']))
+				$arResult['ITEMS'][$key]['COMPOUND'][$v] = $arItem['DISPLAY_PROPERTIES'][$v];
+		$mainPageSections[$arItem['IBLOCK_SECTION_ID']]['ITEMS_KEY'][] = $key;
 	}
-	unset($arItem);
-	$this->setResultCacheKeys(array(
+	$arResult['MAIN_PAGE_SECTIONS'] = $mainPageSections;
+	unset($mainPageSections);
+	$this->setResultCacheKeys([
 		"ID",
 		"IBLOCK_TYPE_ID",
 		"LIST_PAGE_URL",
@@ -193,56 +201,24 @@ if($this->startResultCache(false, array(($arParams["CACHE_GROUPS"]==="N"? false:
 		"IPROPERTY_VALUES",
 		"ITEMS_TIMESTAMP_X",
 		"filters",
-	));
+		'MAIN_PAGE_SECTIONS'
+	]);
 	$this->includeComponentTemplate();
 }
-
 if(isset($arResult["ID"]))
 {
 	$arTitleOptions = null;
-	if($USER->IsAuthorized())
+	if($USER->IsAuthorized() && (($APPLICATION->GetShowIncludeAreas() || is_object($GLOBALS["INTRANET_TOOLBAR"] && $arParams["INTRANET_TOOLBAR"]!=="N") || $arParams["SET_TITLE"])))
 	{
-		if(
-			$APPLICATION->GetShowIncludeAreas()
-			|| (is_object($GLOBALS["INTRANET_TOOLBAR"]) && $arParams["INTRANET_TOOLBAR"]!=="N")
-			|| $arParams["SET_TITLE"]
-		)
+		if(Loader::includeModule("iblock"))
 		{
-			if(Loader::includeModule("iblock"))
-			{
-				$arButtons = CIBlock::GetPanelButtons(
-					$arResult["ID"],
-					0,
-					$arParams["PARENT_SECTION"],
-					array("SECTION_BUTTONS"=>false)
-				);
-
-				if($APPLICATION->GetShowIncludeAreas())
-					$this->addIncludeAreaIcons(CIBlock::GetComponentMenu($APPLICATION->GetPublicShowMode(), $arButtons));
-
-				if(
-					is_array($arButtons["intranet"])
-					&& is_object($INTRANET_TOOLBAR)
-					&& $arParams["INTRANET_TOOLBAR"]!=="N"
-				)
-				{
-					$APPLICATION->AddHeadScript('/bitrix/js/main/utils.js');
-					foreach($arButtons["intranet"] as $arButton)
-						$INTRANET_TOOLBAR->AddButton($arButton);
-				}
-
-				if($arParams["SET_TITLE"])
-				{
-					$arTitleOptions = array(
-						'ADMIN_EDIT_LINK' => $arButtons["submenu"]["edit_iblock"]["ACTION"],
-						'PUBLIC_EDIT_LINK' => "",
-						'COMPONENT_NAME' => $this->getName(),
-					);
-				}
-			}
+			$arButtons = CIBlock::GetPanelButtons($arResult["ID"], 0, $arParams["PARENT_SECTION"], array("SECTION_BUTTONS"=>false));
+			if($APPLICATION->GetShowIncludeAreas())
+				$this->addIncludeAreaIcons(CIBlock::GetComponentMenu($APPLICATION->GetPublicShowMode(), $arButtons));
+			if($arParams["SET_TITLE"])
+				$arTitleOptions = array('ADMIN_EDIT_LINK' => $arButtons["submenu"]["edit_iblock"]["ACTION"], 'PUBLIC_EDIT_LINK' => "", 'COMPONENT_NAME' => $this->getName(),);
 		}
 	}
-
 	$APPLICATION->SetTitle($arResult["SECTION"]["PATH"][0]["IPROPERTY_VALUES"]["SECTION_PAGE_TITLE"]);
 	$APPLICATION->SetPageProperty('metaTitle', $arResult["SECTION"]["PATH"][0]["IPROPERTY_VALUES"]["SECTION_META_TITLE"]);
 	if($arParams["ADD_SECTIONS_CHAIN"] && is_array($arResult["SECTION"]))
@@ -255,11 +231,7 @@ if(isset($arResult["ID"]))
 				$APPLICATION->AddChainItem($arPath["NAME"], $arPath["~SECTION_PAGE_URL"]);
 		}
 	}
-
 	if ($arParams["SET_LAST_MODIFIED"] && $arResult["ITEMS_TIMESTAMP_X"])
-	{
 		Context::getCurrent()->getResponse()->setLastModified($arResult["ITEMS_TIMESTAMP_X"]);
-	}
-
 	return $arResult;
 }

@@ -107,6 +107,14 @@ $arComponentParameters = array(
 			"VALUES" => $arProperty_LNS,
 			"ADDITIONAL_VALUES" => "Y",
 		),
+		"SECTIONS_PROPERTY_CODE" => array(
+			"PARENT" => "DATA_SOURCE",
+			"NAME" => 'select для разделов на главной и в wok',
+			"TYPE" => "LIST",
+			"MULTIPLE" => "Y",
+			"VALUES" => '',
+			"ADDITIONAL_VALUES" => "Y",
+		),
 		"CHECK_DATES" => array(
 			"PARENT" => "DATA_SOURCE",
 			"NAME" => GetMessage("T_IBLOCK_DESC_CHECK_DATES"),

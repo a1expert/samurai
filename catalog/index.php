@@ -1,5 +1,6 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("");?><?$APPLICATION->IncludeComponent(
+$APPLICATION->SetTitle("");?>
+<?$APPLICATION->IncludeComponent(
 	"a1expert:catalog",
 	"",
 	Array(
@@ -42,7 +43,7 @@ $APPLICATION->SetTitle("");?><?$APPLICATION->IncludeComponent(
 		"PARENT_SECTION" => "",
 		"PARENT_SECTION_CODE" => $_REQUEST["SECTION_CODE"],
 		"PREVIEW_TRUNCATE_LEN" => "",
-		"PROPERTY_CODE" => array("PROTEINS","WEIGHT","FATS","CALORIES","ROLLS_COUNT","COMPOSITIOIN","CARBOHYDRATES",""),
+		"PROPERTY_CODE" => array("PROTEINS","WEIGHT","FATS","CALORIES","ROLLS_COUNT","COMPOSITION","CARBOHYDRATES","RATING", 'DISCOUNT'),
 		"SET_BROWSER_TITLE" => "N",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_META_DESCRIPTION" => "N",
@@ -56,4 +57,5 @@ $APPLICATION->SetTitle("");?><?$APPLICATION->IncludeComponent(
 		"SORT_ORDER2" => "",
 		"STRICT_SECTION_CHECK" => "N"
 	)
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
