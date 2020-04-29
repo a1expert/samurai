@@ -2,59 +2,59 @@
 document.addEventListener('DOMContentLoaded', () =>
 {
 	//tabs
-	const tabsBtns = document.querySelectorAll('.tabs__button');
+	const tabsBtns = document.querySelectorAll('.jsTabBtn');
+
 	if (tabsBtns.length > 0)
 	{
 		const tabsMobInner = document.querySelector('.tabs__mobile-controls-inner');
 		const tabsMobToggler = document.querySelector('.tabs__mobile-controls-toggler');
-		const tabs = document.querySelectorAll('.js-tab');
-
-		const changeIcon = icon =>
+		const tabs = document.querySelectorAll('.jsOrderTab');
+		const ChangeIcon = icon =>
 		{
 			const use = tabsMobInner.querySelector('use');
 			use.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', `${icon}`)
 		}
-		const setActiveSelectOption = prop =>
+		const SetActiveSelectOption = prop =>
 		{
 			const optionToSelect = [...tabsMobToggler.options].find(option=>
 			{
 				return option.value === prop;
 			});
 			optionToSelect.selected = true;
-			changeIcon(optionToSelect.dataset.icon);
+			ChangeIcon(optionToSelect.dataset.icon);
 		}
-		const setActiveBtn = btn =>
+		const SetActiveBtn = btn =>
 		{
-			[...tabsBtns].forEach(it =>
+			tabsBtns.forEach(it =>
 			{
 				it.classList.remove('tabs__button--active');
 			});
 			btn.classList.add('tabs__button--active');
 		}
-		const setActiveTab = pointer =>
+		const SetActiveTab = pointer =>
 		{
-			[...tabs].forEach(tab =>
+			tabs.forEach(tab =>
 			{
-				tab.classList.remove('js-tab--active');
+				tab.classList.remove('tabActive');
 			});
-			document.querySelector(`#${pointer}`).classList.add('js-tab--active');
+			document.querySelector(`#${pointer}`).classList.add('tabActive');
 		}
 		const onTabBtnClick = evt =>
 		{
-			setActiveBtn(evt.target);
-			setActiveTab(evt.target.dataset.tab);
-			setActiveSelectOption(evt.target.dataset.tab);
+			SetActiveBtn(evt.target);
+			SetActiveTab(evt.target.dataset.tab);
+			SetActiveSelectOption(evt.target.dataset.tab);
 		}
-		[...tabsBtns].forEach(btn =>btn.addEventListener('click', onTabBtnClick));
-
-		const onTabsMobTogglerChange = evt =>
+		const OnTabsMobTogglerChange = evt =>
 		{
-			setActiveBtn(document.querySelector(`[data-tab=${evt.target.value}]`));
-			setActiveTab(evt.target.value);
+			SetActiveBtn(document.querySelector(`[data-tab=${evt.target.value}]`));
+			SetActiveTab(evt.target.value);
 			const iconPath =  evt.target.options[evt.target.selectedIndex].dataset.icon;
-			changeIcon(iconPath);
+			ChangeIcon(iconPath);
 		};
-		tabsMobToggler.addEventListener('change', onTabsMobTogglerChange);
+
+		tabsBtns.forEach(btn =>btn.addEventListener('click', onTabBtnClick));
+		tabsMobToggler.addEventListener('change', OnTabsMobTogglerChange);
 	}
 
 	const initMainCarousels = el =>
@@ -156,46 +156,125 @@ document.addEventListener('DOMContentLoaded', () =>
 	}
 
 	//#region submenu
-	let subMenuList = document.querySelector('.submenu__list');
-	let menuItemsNodeList = document.querySelectorAll('.submenu__item');
-	let menuItems = [...menuItemsNodeList];
-	let subMenuResponsiveList = document.querySelector('.submenu__responsive-list');
-	let subMenuToggler = document.querySelector('.submenu__toggler');
-	let menuWidth = 0; let copyItem;
+	// let subMenuList = document.querySelector('.submenu__list');
+	// let menuItemsNodeList = document.querySelectorAll('.submenu__item');
+	// let menuItems = [...menuItemsNodeList];
+	// let subMenuResponsiveList = document.querySelector('.submenu__responsive-list');
+	// let subMenuToggler = document.querySelector('.submenu__toggler');
+	// let menuWidth = 0; let copyItem;
+	//
+	// let GetWidth = () =>
+	// {
+	// 	menuWidth = subMenuList.clientWidth;
+	// 	let itemsWidth = 0;
+	// 	menuItems.forEach(item=>{itemsWidth += item.clientWidth});
+	// 	return itemsWidth > menuWidth;
+	// }
+	// let ChangeMenu = () =>
+	// {
+	// 	if(GetWidth())
+	// 	{
+	// 		if(copyItem)
+	// 		{
+	// 			let prevItem = copyItem;
+	// 			copyItem = menuItems.pop();
+	// 			subMenuResponsiveList.insertBefore(copyItem, prevItem);
+	// 			return ChangeMenu();
+	// 		}
+	// 		else
+	// 		{
+	// 			copyItem = menuItems.pop();
+	// 			subMenuResponsiveList.appendChild(copyItem);
+	// 			return ChangeMenu();
+	// 		}
+	// 	}
+	// }
+	//
+	// if(subMenuList)
+	// {
+	// 	ChangeMenu();
+	// 	subMenuToggler.addEventListener('click',()=>subMenuResponsiveList.classList.toggle('hide'));
+	// 	window.addEventListener('resize', ChangeMenu);
+	// }
+	const headerInner = document.querySelector(`.submenu__inner`);
 
-	let GetWidth = () =>
-	{
-		menuWidth = subMenuList.clientWidth;
-		let itemsWidth = 0;
-		menuItems.forEach(item=>{itemsWidth += item.clientWidth});
-		return itemsWidth > menuWidth;
-	}
-	let ChangeMenu = () =>
-	{
-		if(GetWidth())
-		{
-			if(copyItem)
-			{
-				let prevItem = copyItem;
-				copyItem = menuItems.pop();
-				subMenuResponsiveList.insertBefore(copyItem, prevItem);
-				return ChangeMenu();
-			}
-			else
-			{
-				copyItem = menuItems.pop();
-				subMenuResponsiveList.appendChild(copyItem);
-				return ChangeMenu();
-			}
+	const headerMenu = document.querySelector(`.submenu`);
+	const headerMenuList = headerMenu.querySelector(`.submenu__list`);
+	const headerMenuItems = headerMenu.querySelectorAll(`.submenu__item`);
+
+	const hiddenMenu = document.querySelector(`.hidden-menu`);
+	const hiddenMenuList = hiddenMenu.querySelector(`.hidden-menu__list`);
+	const hiddenMenuToggler = hiddenMenu.querySelector(`.hidden-menu__toggler`);
+	const menuItemsData = [...headerMenuItems].map((item) => {
+		return {
+			item,
+			width: item.offsetWidth
 		}
-	}
+	});
+	const hiddenMenuListData = [];
 
-	if(subMenuList)
-	{
-		ChangeMenu();
-		subMenuToggler.addEventListener('click',()=>subMenuResponsiveList.classList.toggle('hide'));
-		window.addEventListener('resize', ChangeMenu);
-	}
+	const calculateWidth = () => {
+		return Number([...headerInner.children]
+			.map(child => child.offsetWidth)
+			.reduce((prev, current) => prev + current));
+	};
+
+	const hideItem = () => {
+		if (menuItemsData.length > 0) {
+			const lastItem = menuItemsData[menuItemsData.length - 1];
+			hiddenMenuListData.push(lastItem);
+			menuItemsData.pop();
+			hiddenMenuList.appendChild(lastItem.item);
+		}
+	};
+
+	const returnItem = () => {
+		if (hiddenMenuListData.length > 0) {
+			const lastItem = hiddenMenuListData[hiddenMenuListData.length - 1];
+			if(calculateWidth() + lastItem.width + 2 <= Number(headerInner.offsetWidth)) {
+				menuItemsData.push(lastItem);
+				hiddenMenuListData.pop();
+				headerMenuList.appendChild(lastItem.item);
+				if (hiddenMenuListData.length === 0) {
+					hiddenMenuList.classList.remove(`hidden-menu__list--open`);
+				}
+				returnItem();
+			}
+
+		}
+	};
+
+	const compareWidths = () => calculateWidth() > Number(headerInner.offsetWidth);
+
+	const rebuildMenu = () => {
+		if(!compareWidths()) {
+			returnItem();
+		}  else {
+			hideItem();
+			rebuildMenu();
+		}
+	};
+
+	const onWindowResize = () => {
+		rebuildMenu();
+	};
+
+	window.addEventListener(`resize`, onWindowResize);
+
+	rebuildMenu();
+
+	const toggleHiddenMenuList = () => {
+		hiddenMenuList.classList.toggle(`hidden-menu__list--open`);
+	};
+
+	const onHiddenMenuToggler = () => {
+		if(hiddenMenuList.children.length > 0) {
+			toggleHiddenMenuList();
+
+		}
+	};
+
+	hiddenMenuToggler.addEventListener(`click`, onHiddenMenuToggler);
 	//#endregion submenu
 
 	//#region stickyHeader
@@ -208,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () =>
 	const sticky = document.querySelector('.submenu');
 	const headerHeight = sticky.offsetTop;
 	const stickyHeight = sticky.offsetHeight;
-	const stickyContainer = sticky.querySelector('.container');
+	const stickyContainer = sticky.querySelector('.submenu__inner');
 	const changeLogoURL = URL=>
 	{
 		if (headerLogoImage.src !== URL)
@@ -232,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () =>
 			header.style.paddingBottom = `${stickyHeight}px`;
 			replaceNode(stickyContainer, 'afterbegin', headerLogo);
 			replaceNode(stickyContainer, 'beforeend', headerCart);
-			ChangeMenu();
+			rebuildMenu();
 		}
 		else if (window.pageYOffset < headerHeight && header.classList.contains("sticky"))
 		{
@@ -241,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () =>
 			header.style.paddingBottom = `${0}px`;
 			replaceNode(headerLogoParent, 'afterbegin', headerLogo);
 			replaceNode(headerCartParent, 'beforeend', headerCart);
-			ChangeMenu();
+			rebuildMenu();
 		}
 	}
 	if(window.innerWidth > 992)
@@ -281,51 +360,29 @@ document.addEventListener('DOMContentLoaded', () =>
 	mobile_menu.addEventListener('click', onMobileMenuClick);
 	//#endregion stickyHeader
 
-	//counter
-	/*const counter = document.querySelector(`.js-counter`);
-	if(counter) {
-		const hoursDictionary = new Map ([
-			'1': 'час',
-			'2': 'часа',
-			'3': 'часа',
-			'4': 'часа'
-		]);
-		const minutesDictionary = new Map([
-			'1': 'минута',
-			'2': 'минуты',
-			'3': 'минуты',
-			'4': 'минуты'
-		]);
-		const secondsDictionary = new Map([
-			'1': 'секунда',
-			'2': 'секунды',
-			'3': 'секунды',
-			'4': 'секунды'
-		]);
-		const hoursOutput = counter.querySelector(`.counter__hours .counter__num`);
-		const minutesOutput = counter.querySelector(`.counter__minutes .counter__num`);
-		const secondsOutput = counter.querySelector(`.counter__seconds .counter__num`);
-		const countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
-
-		const x = setInterval(function() {
-			const now = new Date().getTime();
-			const distance = countDownDate - now;
-			// const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-			const hours = Math.floor((distance / (1000 * 60 * 60 * 24)) * 24);
-			const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-			const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-			hoursOutput.innerHTML = hours < 10 ? `0${hours}` : hours;
-			minutesOutput.innerHTML = minutes < 10 ? `0${minutes}` : minutes;
-			secondsOutput.innerHTML = seconds < 10 ? `0${seconds}` : seconds;
-			if (distance < 0) {
-				clearInterval(x);
-				hoursOutput.innerHTML = '00';
-				minutesOutput.innerHTML = '00';
-				secondsOutput.innerHTML = '00';
-			}
-		}, 1000);
-	}*/
-
 	const saleControls = document.querySelector('.sale__controls');
-	
+
+
+
+	if(window.matchMedia("(max-width: 767px)").matches) {
+		const createWokGrid = $(`.create-wok__grid`);
+		createWokGrid.owlCarousel({
+				loop: false,
+				nav: false,
+				dots: true,
+				items: 1,
+				margin: 15,
+				autoHeight:true
+		})
+		$('.js-wok-next').click(function() {
+			createWokGrid.trigger('next.owl.carousel');
+		})
+		$('.js-wok-prev').click(function() {
+			createWokGrid.trigger('prev.owl.carousel');
+		})
+		$('.js-wok-reset').click(function() {
+			createWokGrid.trigger('to.owl.carousel', [0, 100]);
+		})
+	}
+
 });

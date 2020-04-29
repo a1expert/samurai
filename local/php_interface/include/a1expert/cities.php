@@ -21,9 +21,7 @@ namespace A1expert
             $arFilter = $fixer->SetFilter(array("IBLOCK_ID"=>CITIES_ID));
             $arSelect = $fixer->SetSelect(array('ID', 'IBLOCK_ID', 'NAME', 'CODE', 'PROPERTY_LINK', 'PROPERTY_PHONE', 'PROPERTY_WORK_TIME'));
             if ($cache->read(36000000, "cities"))
-            {
                 $this->cities = $cache->get("cities");
-            }
             else
             {
                 $arResult = $fixer->GetElements($arOrder, $arFilter, false, false, $arSelect);
@@ -37,6 +35,8 @@ namespace A1expert
             foreach ($this->cities as $city)
                 if($_SERVER['HTTP_HOST'] === $city['PROPERTY_LINK_VALUE'])
                     $this->curCity = $city;
+                else
+                    $this->curCity = $this->cities[array_key_first($this->cities)];
             if(empty($this->cities))
                 throw new Exception('cities is empty!', 0, __FILE__, __LINE__);
             

@@ -3,6 +3,7 @@ namespace a1expert;
 use Bitrix\Main\Loader;
 use Bitrix\Sale;
 use Bitrix\Catalog;
+use Fixer;
 class Basket
 {
     public function __construct()
@@ -35,6 +36,13 @@ class Basket
             else
                 $item->setField('QUANTITY', $quantity);
         }
+        elseif ($item = $basket->getItemById($productId))
+        {
+            if ($quantity <= 0)
+                $item->delete();
+            else
+                $item->setField('QUANTITY', $quantity);
+        }
         else
         {
             if ($quantity > 0)
@@ -48,31 +56,41 @@ class Basket
                     'PRODUCT_PROVIDER_CLASS' => 'CCatalogProductProvider',
                 ]);
             }
-        }
+        }        
         $basket->save();
         return $this->get();
     }
     public static function Wok($arrId)
     {
         $class = new self();
-        $basket = $class->_getBasket();
-        foreach ($arrId as $id)
+        $IDs = json_decode($arrId);
+        $wokItems = \Bitrix\Iblock\ElementTable::getList(['filter' => ['IBLOCK_ID'=> WOK_IBLOCK_ID, 'ID' =>  $IDs], 'select' => ['NAME', 'IBLOCK_ID', 'ID', 'IBLOCK_SECTION_ID', ]]);
+        $price = 0;
+        $compound = '';
+        $indexArr = array_count_values($IDs);
+        while ($item = $wokItems->Fetch())
         {
-            if($item = $basket->getExistsItem('catalog', $id))
-                $item->setField('QUANTITY', (float)$item->getQuantity() + 1);
+            $price += \Bitrix\Catalog\PriceTable::getList(['filter' => ['=PRODUCT_ID' => $item['ID']], 'select' => ['PRICE']])->fetch()['PRICE'] * $indexArr[$item['ID']];
+            if($item['IBLOCK_SECTION_ID'] == 87)$compound .= ', соус: ';
+            $compound .= $item['NAME'];
+            if($indexArr[$item['ID']] == 2)
+                $compound .= ' 2шт., ';
             else
-            {
-                $item = $basket->createItem('catalog', $id);
-                $item->setFields(
-                [
-                    'QUANTITY' => 1,
-                    'CURRENCY' => \Bitrix\Currency\CurrencyManager::getBaseCurrency(),
-                    'LID' => $class->_getSite(),
-                    'PRODUCT_PROVIDER_CLASS' => 'CCatalogProductProvider',
-                ]);
-            }
+                $compound .= ', ';
         }
-        $basket->save();
+        Loader::includeModule('sale');
+        \CSaleBasket::Add([
+            "PRODUCT_ID" => MY_WOK_ID,
+            "PRODUCT_PRICE_ID" => 1,
+            "PRICE" => $price,
+            "CURRENCY" => "RUB",
+            "QUANTITY" => 1,
+            "LID" => \Bitrix\Main\Context::getCurrent()->getSite(),
+            "DELAY" => "N",
+            "CAN_BUY" => "Y",
+            "NAME" => "Моя лапша!",
+            'PROPS' => [["NAME" => 'Состав', "CODE" => "COMPOUND", "VALUE" => $compound]]
+        ]);
     }
     public function get(): array
     {
@@ -87,25 +105,39 @@ class Basket
             $arResult['arPrice']['price'] = 0;
             $arResult['arPrice']['discountPrice'] = 0;
             /** @var Sale\BasketItemBase $basketItem */
-            
             foreach ($basket->getBasketItems() as $basketItem)
             {
+                $productId = $basketItem->getProductId();
+                $iblockID = \CIBlockElement::GetIBlockByID($productId);
                 $quantity = $basketItem->getQuantity();
-                $arPrice = \CCatalogProduct::GetOptimalPrice((int)$basketItem->getProductId(), 1, (int)$USER->GetUserGroupArray(), 'N', array(), $this->_getSite(), array());
+
+                $arPrice = \CCatalogProduct::GetOptimalPrice((int)$productId, 1, (int)$USER->GetUserGroupArray(), 'N', array(), $this->_getSite(), array());
+                if($iblockID == WOK_IBLOCK_ID)
+                {
+                    $arPrice['PRICE']['PRICE'] = $basketItem->getPrice();
+                    $arPrice['DISCOUNT_PRICE'] = $arPrice['PRICE']['PRICE'];
+                }
                 $price = round($arPrice['PRICE']['PRICE']) * $basketItem->getQuantity();
                 $discountPrice = round($arPrice['DISCOUNT_PRICE']) * $basketItem->getQuantity();
                 $arResult['arPrice']['price'] += $price;
                 $arResult['arPrice']['discountPrice'] += $discountPrice;
+                $section = \CIBlockElement::GetElementGroups($productId, false, ['ID'])->Fetch();
+                $resB = \CIBlockElement::GetByID($productId);
+                if($ar_res = $resB->GetNext())
+                    $img = \CFile::GetFileArray($ar_res['PREVIEW_PICTURE']);
                 $arItem = [
                     'ID' => $basketItem->getId(),
-                    'PRODUCT_ID' => $basketItem->getProductId(),
-                    'IBLOCK_ID' => \CIBlockElement::GetIBlockByID($basketItem->getProductId()),
+                    'PRODUCT_ID' => $productId,
+                    'IBLOCK_ID' => $iblockID,
+                    'SECTION_ID' => $section['ID'],
                     'PRICE' => $discountPrice,
                     'NAME' => $basketItem->getField('NAME'),
+                    'IMG' => $img['SRC'],
                     'QUANTITY' => $basketItem->getQuantity(),
-                    'ELEMENT_INFO' => \CCatalogSku::GetProductInfo($basketItem->getProductId()),
+                    'ELEMENT_INFO' => \CCatalogSku::GetProductInfo($productId),
                 ];
-                $arResult['ITEMS'][$arItem['PRODUCT_ID']] = $arItem;
+                $arResultItemID = ($iblockID == WOK_IBLOCK_ID) ? $arItem['ID'] : $productId;
+                $arResult['ITEMS'][$arResultItemID] = $arItem;
             }
             if (!empty($arResult['ITEMS']))
             {

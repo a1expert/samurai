@@ -7,19 +7,19 @@ $APPLICATION->SetTitle("Обратная связь");
         <div class="section__layout create-feedback__layout">
             <h2 class="visually-hidden">Оставить отзыв о нас</h2>
             <p class="create-feedback__notice"><?$APPLICATION->IncludeFile('/local/inc_areas/reviews/topText.php', array(), array('MODE' => 'text', 'NAME'=>''));?></p>
-            <form class="form create-feedback__form" name="review" action="http://xvideos.com/" method="POST" enctype="multipart/form-data" id="revForm">
+            <form class="form create-feedback__form revForm" name="review" method="POST" enctype="multipart/form-data" id="revForm">
                 <div class="form__top">
 					<div class="form__group formTopGroup">
-						<label for="name" class="form__label">Ваше имя</label>
-						<input id="name" type="text" name="name" class="input">
+						<label for="name" class="form__label">Ваше имя *</label>
+						<input id="name" type="text" name="name" class="input" required>
 					</div>
                     <div class="form__group formTopGroup">
 						<label for="phone" class="form__label">Ваш номер телефона</label>
-						<input id="phone" type="text" name="phone" class="input">
+						<input id="phone" type="tel" name="phone" class="input">
 					</div>
                     <div class="form__group formTopGroup">
 						<label for="email" class="form__label">Ваш email</label>
-						<input id="email" type="text" name="email" class="input">
+						<input id="email" type="email" name="email" class="input">
 					</div>
                 </div>
                 <div class="form__body">
@@ -32,12 +32,14 @@ $APPLICATION->SetTitle("Обратная связь");
 						<label for="photo" class="form__label form__file">Добавьте фотографию</label>
 					</div>*/?>
                     <div class="form__group">
-						<input id="policy" type="checkbox" name="policy" class="visually-hidden">
+						<input id="policy" type="checkbox" name="policy" class="visually-hidden" checked required>
 						<label for="policy" class="form__label form__policy">Заполняя настоящую форму вы даете свое согласие на обработку своих персональных данных</label>
 					</div>
                 </div>
 				<div class="form__footer">
 					<button type="submit" class="button form__submit" id="revSubmit">отправить комментарий</button>
+					<?/* В следующий тег можно вставить тект сообщения для всплывашки после успешной отправки отзыва*/?>
+					<div class="hide" id="revSubmitText">Спасибо за ваш отзыв! Отзыв будет добавлен на сайт после модерации</div>
 				</div>
 			</form>
         </div>
@@ -88,7 +90,7 @@ $APPLICATION->SetTitle("Обратная связь");
 	"SET_META_DESCRIPTION" => "Y",
 	"SET_META_KEYWORDS" => "Y",
 	"SET_STATUS_404" => "N",
-	"SET_TITLE" => "Y",
+	"SET_TITLE" => "N",
 	"SHOW_404" => "N",
 	"SORT_BY1" => "TIMESTAMP_X",
 	"SORT_BY2" => "",
