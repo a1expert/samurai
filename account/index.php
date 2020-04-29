@@ -20,23 +20,23 @@ use Bitrix\Main\Context,
 			</div>
 		</div>
 		<div class="tabs__controls">
-			<button data-tab="tab-1" class="tabs__button tabs__button--active">
+			<button data-tab="tab-1" class="tabs__button tabs__button--active jsTabBtn">
 				<svg xmlns:xlink="http://www.w3.org/1999/xlink">
 					<use xlink:href="/local/assets/images/icon.svg#icon_cursor"></use>
 				</svg>Личные данные
 			</button>
-			<button data-tab="tab-2" class="tabs__button">
+			<button data-tab="tab-2" class="tabs__button jsTabBtn">
 				<svg xmlns:xlink="http://www.w3.org/1999/xlink">
 					<use xlink:href="/local/assets/images/icon.svg#icon_marketing"></use>
 				</svg>История заказов</button>
-			<button data-tab="tab-3" class="tabs__button">
+			<button data-tab="tab-3" class="tabs__button jsTabBtn">
 				<svg xmlns:xlink="http://www.w3.org/1999/xlink">
 					<use xlink:href="/local/assets/images/icon.svg#icon_email"></use>
 				</svg>Рассылки
 			</button>
 		</div>
 		<div class="tabs__content">
-			<div id="tab-1" class="js-tab js-tab--active">
+			<div id="tab-1" class="js-tab tabActive jsOrderTab">
 				<?$APPLICATION->IncludeComponent("a1expert:profile", "", [
 					"CHECK_RIGHTS" => "N",
 					"SEND_INFO" => "N",
@@ -49,10 +49,10 @@ use Bitrix\Main\Context,
 					<?$APPLICATION->IncludeComponent("a1expert:orders.history", "tab1", []);?>
 				</section>
 			</div>
-			<div id="tab-2" class="js-tab">
+			<div id="tab-2" class="js-tab jsOrderTab">
 				<?$APPLICATION->IncludeComponent("a1expert:orders.history", "tab2", []);?>
 			</div>
-			<div id="tab-3" class="js-tab">
+			<div id="tab-3" class="js-tab jsOrderTab">
 				<section class="section subscriptions">
 					<h2 class="visually-hidden">Выбор рассылок</h2>
 					<p class="intro-text subscriptions__intro">Сервис в разработке</p>

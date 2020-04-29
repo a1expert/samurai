@@ -6,7 +6,7 @@ $id = $el->Add(
 [
     'IBLOCK_ID' => 10,
     'IBLOCK_SECTION_ID' => false,
-    'ACTIVE' => 'Y',
+    'ACTIVE' => 'N',
     'NAME' => $_POST['name'],
     'PREVIEW_TEXT' => $_POST['comment'],
     'PROPERTY_VALUES' => [

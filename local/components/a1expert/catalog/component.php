@@ -82,8 +82,20 @@ if($this->startResultCache(false, array(($arParams["CACHE_GROUPS"]==="N"? false:
 	if($bGetProperty)
 		$arSelect[] = "PROPERTY_*";
 	$arFilter = ["IBLOCK_ID" => $arResult["ID"], "IBLOCK_LID" => SITE_ID, "ACTIVE" => "Y"];
+
 	$PARENT_SECTION = CIBlockFindTools::GetSectionID($arParams["PARENT_SECTION"], $arParams["PARENT_SECTION_CODE"], ["GLOBAL_ACTIVE" => "Y", "IBLOCK_ID" => $arResult["ID"]]);
+	/*$PARENT_SECTION = CIBlockSection::GetList(
+		array("SORT"=>"ASC"),
+		array(
+			'IBLOCK_ID' => '1',
+			"ACTIVE" => 'Y',
+			'CODE' => $arParams["PARENT_SECTION_CODE"]
+		),
+		false,
+		array('ID', 'IBLOCK_ID')
+	)->GetNext();*/
 	$arParams["PARENT_SECTION"] = $PARENT_SECTION;
+
 	if($arParams["PARENT_SECTION"] > 0)
 	{
 		$arFilter["SECTION_ID"] = $arParams["PARENT_SECTION"];
@@ -111,6 +123,7 @@ if($this->startResultCache(false, array(($arParams["CACHE_GROUPS"]==="N"? false:
 	while($obElement = $rsElement->GetNextElement())
 	{
 		$arItem = $obElement->GetFields();
+		if($arItem['ID'] == MY_WOK_ID)continue;
 		$arButtons = CIBlock::GetPanelButtons($arItem["IBLOCK_ID"], $arItem["ID"], 0, ["SECTION_BUTTONS"=>false, "SESSID"=>false]);
 		$arItem["EDIT_LINK"] = $arButtons["edit"]["edit_element"]["ACTION_URL"];
 		$arItem["DELETE_LINK"] = $arButtons["edit"]["delete_element"]["ACTION_URL"];
@@ -119,6 +132,7 @@ if($this->startResultCache(false, array(($arParams["CACHE_GROUPS"]==="N"? false:
 		$arItem['DETAIL_PICTURE'] = (!empty($arItem['DETAIL_PICTURE'])) ? \CFile::GetPath($arItem['DETAIL_PICTURE']) : '';
 		if($bGetProperty)
 			$arItem["PROPERTIES"] = $obElement->GetProperties();
+		if(in_array($_COOKIE['city'], $arItem['PROPERTIES']['HIDE']['VALUE']))continue;
 		$arItem["DISPLAY_PROPERTIES"] = [];
 		foreach($arParams["PROPERTY_CODE"] as $pid)
 		{
@@ -148,11 +162,11 @@ if($this->startResultCache(false, array(($arParams["CACHE_GROUPS"]==="N"? false:
 	foreach ($rsOffers as $key => $value)
 		if($value)
 			$elementsWithOffers[] = $key;
-	$offersList = CCatalogSKU::getOffersList($elementsWithOffers, $iblockID = $arParams['IBLOCK_ID'], $skuFilter = [], $fields = ['CATALOG_PRICE_1'], $propertyFilter = ['ID'=>[9,76]]);
+	$offersList = CCatalogSKU::getOffersList($elementsWithOffers, $iblockID = $arParams['IBLOCK_ID'], $skuFilter = [], $fields = ['CATALOG_PRICE_1'], $propertyFilter = ['ID'=>[9,55]]);
 	foreach ($offersList as $key => $item)
-		foreach ($item as $value)
+		foreach ($item as $offerKey => $value)
 			if($value['PROPERTIES']['CITY']['VALUE'] == $_COOKIE['city'])
-				$sortedOffers[$key] = $value;
+				$sortedOffers[$key][$offerKey] = $value;
 	$arResult['filters'] = [];
 	//состав (белки жиры итд)
 	$compound = ['PROTEINS', 'FATS', 'CARBOHYDRATES', 'CALORIES'];
@@ -167,17 +181,19 @@ if($this->startResultCache(false, array(($arParams["CACHE_GROUPS"]==="N"? false:
 	{
 		if(array_key_exists($arItem['ID'], $sortedOffers))
 		{
-			$offer = $sortedOffers[$arItem['ID']];
-			$offer['PRICES'] = CCatalogProduct::GetOptimalPrice((int)$offer['ID'], 1, $USER->GetUserGroupArray(), 'N', [], $this->getSiteId(), []);
-			if(!empty($offer['PRICES']['DISCOUNT']))
+			foreach ($sortedOffers[$arItem['ID']] as $offer)
 			{
-				$offer['PRICES']['IS_DISCOUNT'] = true;
-				$offer['PRICES']['DISCOUNT_PRICE'] = round($offer['PRICES']['DISCOUNT_PRICE']);
-				$offer['PRICES']['RESULT_PRICE']['DISCOUNT_PRICE'] = round($offer['PRICES']['RESULT_PRICE']['DISCOUNT_PRICE']);
+				$offer['PRICES'] = CCatalogProduct::GetOptimalPrice((int)$offer['ID'], 1, $USER->GetUserGroupArray(), 'N', [], $this->getSiteId(), []);
+				if(!empty($offer['PRICES']['DISCOUNT']))
+				{
+					$offer['PRICES']['IS_DISCOUNT'] = true;
+					$offer['PRICES']['DISCOUNT_PRICE'] = round($offer['PRICES']['DISCOUNT_PRICE']);
+					$offer['PRICES']['RESULT_PRICE']['DISCOUNT_PRICE'] = round($offer['PRICES']['RESULT_PRICE']['DISCOUNT_PRICE']);
+				}
+				else
+					$arItem['PRICES']['IS_DISCOUNT'] = false;
+				$arResult['ITEMS'][$key]['OFFERS'][] = $offer;
 			}
-			else
-				$arItem['PRICES']['IS_DISCOUNT'] = false;
-			$arResult['ITEMS'][$key]['OFFERS'][] = $offer;
 		}
 		foreach ($arItem['PROPERTIES']['FILTER']['VALUE'] as $value)
 			$arResult['filters'][$value] = $value;
@@ -201,7 +217,8 @@ if($this->startResultCache(false, array(($arParams["CACHE_GROUPS"]==="N"? false:
 		"IPROPERTY_VALUES",
 		"ITEMS_TIMESTAMP_X",
 		"filters",
-		'MAIN_PAGE_SECTIONS'
+		'MAIN_PAGE_SECTIONS',
+		'ITEMS'
 	]);
 	$this->includeComponentTemplate();
 }

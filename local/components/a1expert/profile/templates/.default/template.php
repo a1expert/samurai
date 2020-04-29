@@ -44,7 +44,7 @@ if($arResult['passValidError'] == true)
                     <use xlink:href="/local/assets/images/icon.svg#icon_blades"></use>
                 </svg>Баланс бонусных баллов
             </p>
-            <p class="account__personal-data"><?=$arResult['arUser']['UF_BONUSES']?> бонусов</p>
+            <p class="account__personal-data"><?=(empty($arResult['arUser']['UF_BONUSES']))?'0': $arResult['arUser']['UF_BONUSES'];?> бонусов</p>
         </li>
     </ul>
     <div class="account__controls">
@@ -61,6 +61,11 @@ if($arResult['passValidError'] == true)
             <svg xmlns:xlink="http://www.w3.org/1999/xlink">
                 <use xlink:href="/local/assets/images/icon.svg#icon_gear"></use>
             </svg>Сменить пароль
+        </a>
+        <a href="/?logout=yes" class="account__controls-button" id="logout">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink">
+                <use xlink:href="/local/assets/images/icon.svg#icon_logout"></use>
+            </svg>Выход
         </a>
     </div>
 </section>

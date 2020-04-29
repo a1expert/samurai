@@ -12,20 +12,26 @@ else
     <h3 class="basket__title">Ваш заказ</h3>
     <div class="basketList" id="jsBasketList">
         <?foreach ($arResult['ITEMS'] as $key => $arItem)
-        {?>
-            <div class="basksetList__item product jsProduct" id="id<?=$arItem['PRODUCT_ID'];?>" data-id="<?=$arItem['PRODUCT_ID'];?>" data-quant="<?=$arItem['QUANTITY'];?>">
+        {
+            $iblockID = $arItem['IBLOCK_ID'];
+            $wokFlag = $iblockID == WOK_IBLOCK_ID;
+            $id = ($wokFlag) ? $arItem['ID'] : $arItem['PRODUCT_ID'];
+            ?>
+            <div class="basksetList__item product <?=($wokFlag) ? 'jsWokProduct' : 'jsProduct';?>" id="id<?=$id;?>" data-id="<?=$id;?>" data-quant="<?=$arItem['QUANTITY'];?>">
                 <img class="product__img" src="<?=$arItem['IMG'];?>" alt="<?=$arItem['NAME']?>">
                 <div class="product__content">
                     <div class="product__name"><?=$arItem['NAME']?></div>
                     <div class="product__quantity">
-                        <div class="product__btnMinus centered jsDecrement" data-id="<?=$arItem['PRODUCT_ID'];?>">–</div>
-                        <input type="number" name="curQuant" class="product__curQuantity jsCurQuant" data-id="<?=$arItem['PRODUCT_ID'];?>" value="<?=$arItem['QUANTITY'];?>"/>
-                        <div class="product__btnPlus centered jsIncrement" data-id="<?=$arItem['PRODUCT_ID'];?>">+</div>
+                        <div class="product__btnMinus centered jsDecrement" data-id="<?=$id;?>">–</div>
+                        <input type="number" name="curQuant" class="product__curQuantity <?=($wokFlag) ? 'jsWokCurQuant' : 'jsCurQuant';?>" data-id="<?=$id;?>" value="<?=($id == '0') ? $wokQuantity : $arItem['QUANTITY'];?>"/>
+                        <div class="product__btnPlus centered jsIncrement" data-id="<?=$id;?>">+</div>
                     </div>
                     <div class="product__price"><?=$arItem['PRICE'];?> ₽</div>
                 </div>
-                <div class="product__delBtn jsDelBtn" data-id="<?=$arItem['PRODUCT_ID'];?>">×</div>
-            </div><?
+                <div class="product__delBtn <?=($wokFlag) ? 'jsWokDelBtn' : 'jsDelBtn';?>" data-id="<?=$id;?>">×</div>
+            </div>
+            <?
+            $wokFlag = false;
         }?>
         <div style="display:none;" id="basketFlag"></div>
     </div>
@@ -50,7 +56,7 @@ else
                 <img class="product__img" src="<?=$arShoved['PREVIEW_PICTURE']['SRC'];?>" alt="<?=$arShoved['NAME']?>">
                 <div class="product__content">
                     <div class="product__name"><?=$arShoved['NAME']?></div>
-                    <div data-id="<?=$arShoved['ID']?>" class="basket__addBtn jsBuy_link">Добавить</div>
+                    <div data-id="<?=$arShoved['ID']?>" class="basket__addBtn jsBuy_link id<?=$arShoved['ID'];?>">Добавить</div>
                     <div class="product__price"><?=$arShoved['CATALOG_PRICE_1'];?> ₽</div>
                 </div>
             </div><?
@@ -68,3 +74,4 @@ else
     <?
 }?>
 <div style="display:none;" id="basketItemsQuant" data-value="<?=$arResult['COUNT'];?>"><?=$arResult['COUNT'];?></div>
+<div class="hide jsBasketPrice" data-value="<?=(int)$arResult['arPrice']['discountPrice'];?>"></div>

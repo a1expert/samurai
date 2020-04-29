@@ -9,45 +9,19 @@ class A1SamuraiBasket extends \CBitrixComponent
         $this->arResult = Basket::getList();
         if (!empty($this->arResult['ITEMS']))
         {
-            $arElemetsId['elementsId'] = [];
-            $arElemetsId['productId'] = [];
+            $fixer = new Fixer();            
             foreach ($this->arResult['ITEMS'] as $key => $arItem)
             {
-                if($arItem['ELEMENT_INFO'] === false)
+                if($arItem['PRICE'] == 0 && $arItem['IBLOCK_ID'] != WOK_IBLOCK_ID)
                 {
-                    $arElemetsId['productId'][$key] = $arItem['PRODUCT_ID'];
-                    $arElemetsId['elementsId'][$key] = $arItem['PRODUCT_ID'];
-                }
-                else
-                {
-                    $arElemetsId['productId'][$arItem['ELEMENT_INFO']['ID']] = $arItem['PRODUCT_ID'];
-                    $arElemetsId['elementsId'][$key] = $arItem['ELEMENT_INFO']['ID'];
-                    $elsIblockId = $arItem['ELEMENT_INFO']['IBLOCK_ID'];
-                }
-            }
-            $fixer = new Fixer();
-            $arElemets = $fixer->GetElements([], ['ID'=> $arElemetsId['elementsId']], false,false, ['PREVIEW_PICTURE', 'ID'], false);
-            
-            foreach ($arElemets as $key => $value)
-                $newArElements[$arElemetsId['productId'][$value['ID']]] = $value;
-            
-            $arElemets = $newArElements;
-            unset($newArElements);
-            foreach ($this->arResult['ITEMS'] as $key => $value)
-                $this->arResult['ITEMS'][$key]['IMG'] = $arElemets[$key]['PREVIEW_PICTURE']['SRC'];
-            
-            foreach ($this->arResult['ITEMS'] as $key => $value)
-            {
-                if($value['PRICE'] == 0)
-                {
-                    if($this->arResult['PRICE'] < 1000)
+                    if($this->arResult['arPrice']['price'] < 1000)
                     {
                         Basket::Remove($this->arResult['ITEMS'][$key]['PRODUCT_ID']);
                         unset($this->arResult['ITEMS'][$key]);
                     }
                     else
                     {
-                        $this->arResult['GIFTS'][$key] = $value;
+                        $this->arResult['GIFTS'][$key] = $arItem;
                         unset($this->arResult['ITEMS'][$key]);
                     }
                 }

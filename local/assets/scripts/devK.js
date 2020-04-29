@@ -1,64 +1,45 @@
 "use strict";
 function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return !!right[Symbol.hasInstance](left); } else { return left instanceof right; } }
-
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
 function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 function _classCallCheck(instance, Constructor) { if (!_instanceof(instance, Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var CatalogFIlter = function CatalogFIlter() {
   var _this = this;
-
   _classCallCheck(this, CatalogFIlter);
-
   _defineProperty(this, "ArrayCompare", function (array1, array2) {
     for (var i = 0; i < array2.length; i++) {
       if (!array1.includes(array2[i])) return false;
     }
-
     return true;
   });
-
   _defineProperty(this, "OnFilterChangeHandler", function () {
     var tmpArray = [];
-
     _this.catalogItems.forEach(function (item) {
       var itemIds = item.dataset.sectionsid.split(',');
-
       if (_this.ArrayCompare(itemIds, _this.filterArray)) {
         item.style.display = 'list-item';
         tmpArray = tmpArray.concat(itemIds);
       } else item.style.display = 'none';
     });
-
     _this.filterLabels.forEach(function (label) {
       if (tmpArray.indexOf(label.dataset.sectionid) < 0 && label.id !== 'labelAll') label.classList.add('disabledBtn');else label.classList.remove('disabledBtn');
     });
   });
-
   _defineProperty(this, "AllBtnHandler", function () {
     _this.catalogItems.forEach(function (item) {
       return item.style.display = 'list-item';
     });
-
     _this.filtersBtns.forEach(function (btn) {
       btn.checked = btn.dataset.sectionid == 'all' ? true : false;
     });
-
     _this.filterLabels.forEach(function (label) {
       return label.classList.remove('disabledBtn');
     });
-
     _this.filterArray = [];
   });
-
   _defineProperty(this, "OnBtnChangeHandler", function (e) {
     var id = e.target.dataset.sectionid;
     if (id == 'all') _this.AllBtnHandler();else {
@@ -68,66 +49,50 @@ var CatalogFIlter = function CatalogFIlter() {
       _this.OnFilterChangeHandler();
     }
   });
-
   _defineProperty(this, "SortNChangeClass", function (btn, sortType) {
     btn.classList.add('filters__toggler--active');
-
     if (btn.classList.contains('filters__toggler--up')) {
       btn.classList.remove('filters__toggler--up');
       btn.classList.add('filters__toggler--down');
-
       _this.catalogItems.sort(function (a, b) {
         return parseInt(b.dataset[sortType]) - parseInt(a.dataset[sortType]);
       });
     } else if (btn.classList.contains('filters__toggler--down')) {
       btn.classList.remove('filters__toggler--down');
       btn.classList.add('filters__toggler--up');
-
       _this.catalogItems.sort(function (a, b) {
         return parseInt(a.dataset[sortType]) - parseInt(b.dataset[sortType]);
       });
     } else {
       btn.classList.add('filters__toggler--up');
-
       _this.catalogItems.sort(function (a, b) {
         return parseInt(a.dataset[sortType]) - parseInt(b.dataset[sortType]);
       });
     }
   });
-
   _defineProperty(this, "OnSortBtnHandler", function (e) {
     _this.sortBtns.forEach(function (btn) {
       return btn.classList.remove('filters__toggler--active');
     });
-
     _this.SortNChangeClass(e.target, e.target.id);
-
     _this.catalogItems.forEach(function (item, i) {
       item.style.order = i;
     });
   });
-
   _defineProperty(this, "Execute", function () {
     _this.filtersBtns.forEach(function (btn) {
       return btn.addEventListener('change', _this.OnBtnChangeHandler);
     });
-
     _this.sortBtns.forEach(function (btn) {
       return btn.addEventListener('click', _this.OnSortBtnHandler);
     });
   });
-
   //кнопки
   this.filtersBtns = document.querySelectorAll('.jsFiltersBtn'); // кнопка "Все"
-
   this.btnAll = document.querySelector('#all'); //плитка / товары
-
   this.catalogItems = _toConsumableArray(document.querySelectorAll('.jsCatalogItem')); //лейблы
-
   this.filterLabels = document.querySelectorAll('.jsFiltersLabel'); //Конпки сортировки
-
   this.sortBtns = document.querySelectorAll('.filters__toggler'); //значения текущего фильтра
-
   this.filterArray = [];
 }
 /**
@@ -145,6 +110,49 @@ document.addEventListener('DOMContentLoaded', () =>
         catalogFilter.Execute();
 	}
 	const removeElement = (element) =>element.remove();
+	/**
+	 * Всплывающая подсказка
+	 * @place {object} Событие или элемент на котором нужно вызвать подсказку. Из него берутся координаты клика на документе.
+	 * @text {string} Тестк подсказки
+	 * @time {int} Время показа подсказки в млсекундах. По дефолту = 2 сек.
+	 * @fixed {bool} Флаг для применения позицианирования fixed, по умолчания = false (position: absolute), применять true только если передается событие
+	 */
+	const ShowTooltip = (place, text, time = 2000, fixed = false) =>
+	{
+		let top = 0; let left = 0;
+		if(place.target == undefined)
+		{
+			let rect = place.getBoundingClientRect();
+			top = rect.y + pageYOffset;
+			left = rect.x + pageXOffset;
+		}
+		else//срабатывает когда передано событие
+		{
+			if(fixed)
+			{
+				top = place.clientY;
+				left = place.clientX;
+			}
+			else
+			{
+				top = place.pageY;
+				left = place.pageX;
+			}
+		}
+		let tooltip = document.querySelector('.tooltip');
+		if(tooltip)
+		{
+			tooltip.innerHTML = text;
+			tooltip.classList.remove('hide');
+			if(fixed)tooltip.style.position = 'fixed';
+			tooltip.style.top = `${top - tooltip.offsetHeight}px`;
+			tooltip.style.left = `${left}px`;
+			setTimeout(() => {
+				tooltip.classList.add('hide');
+				if(fixed)tooltip.style.position = 'absolute';
+			}, time);
+		}
+	}
 	const documentOnKeyDown = (evt, layout) =>
 	{
 		if (evt.key === "Escape" || evt.key === "Esc")
@@ -201,6 +209,7 @@ document.addEventListener('DOMContentLoaded', () =>
 		}
 	}
 	LoadingIcon.Constructor();
+
     //#region city toggler
 	const cityTogglers = document.querySelectorAll('.jsCityToggler');
 
@@ -235,6 +244,7 @@ document.addEventListener('DOMContentLoaded', () =>
 				popup.style.display = 'flex';
 				popupContent.innerHTML = '<div class="popup__closeBtn" onclick="this.parentNode.parentNode.style.display = \'none\'">&#x2715;</div>';
 				popupContent.appendChild(card);
+				card.querySelectorAll('.jsBuy_link').forEach(btn=>btn.addEventListener('click', BuyBtnHandler));
 				break;
 			}
 		}
@@ -251,29 +261,27 @@ document.addEventListener('DOMContentLoaded', () =>
 	//#endregion catalog popup
 
 	//#region reviews
-	const revForm = document.querySelector('#revForm');
+	const revForm = document.querySelector('.revForm');
 	const revBtn = document.querySelector('#revSubmit');
-
+	const revSubmitText = document.querySelector('#revSubmitText');
 	const RevAddHandler = e =>
 	{
 		e.preventDefault();
+		LoadingIcon.Show();
 		revBtn.setAttribute('disabled', 'disabled');
 		const formData = new FormData(revForm);
+		
 		fetch('/local/inc_files/reviewAdd.php', {method: 'POST', body: formData})
 		.then(response =>
 		{
-			if(response.status == 200)
-				return response.text();
-		})
-		.then(text =>
-		{
-			if(text != 'false')
-				revBtn.removeAttribute('disabled');
+			LoadingIcon.Hide();
+			if(response.ok)
+				ShowTooltip(revBtn, revSubmitText.innerHTML, 5000);
 		});
-
 	}
-	if(revBtn)
-		revBtn.addEventListener('click', RevAddHandler);
+	if(revForm)
+		revForm.addEventListener('submit', RevAddHandler);
+	
 	//#endregion reviews
 
 	//#region Basket
@@ -297,6 +305,8 @@ document.addEventListener('DOMContentLoaded', () =>
 	let arrProducts = {};
 	//я уже не помню зачем создовал это событие.
 	let updateBasketEvent = new Event("updateBasketEvent", {bubbles: true});
+	//пужырик летащий в корзину при покупке
+	let glob = document.querySelector('.glob');
 	//ф-ция открытия корзины
 	const BasketDisplayToggle = () =>
 	{
@@ -309,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () =>
 		fetch(getBasketUrl)
 		.then(response=>
 		{
-			if(response.status === 200)
+			if(response.ok)
 				return response.text();
 			else
 			{
@@ -326,7 +336,12 @@ document.addEventListener('DOMContentLoaded', () =>
 				LoadingIcon.Hide();
 				Basket();
 				UpdateGifts();
-				document.dispatchEvent(updateBasketEvent);
+			}
+			else
+			{
+				LoadingIcon.Hide();
+				alert('Fatal error! Everything dying!');
+				return false;
 			}
 		});
 	}
@@ -336,8 +351,14 @@ document.addEventListener('DOMContentLoaded', () =>
 		fetch(`${actionUrl}?action=update&id=${id}&quant=${quant}`)
 		.then(response=>
 		{
-			if(response.status === 200)
+			if(response.ok)
 				UpdateBasket();
+			else
+			{
+				LoadingIcon.Hide();
+				alert('Fatal error! Everything dying!');
+				return false;
+			}
 		});
 	}
 	const IncBtnHandler = e =>
@@ -370,16 +391,25 @@ document.addEventListener('DOMContentLoaded', () =>
 		fetch(`${actionUrl}?action=remove&id=${el.dataset.id}`)
 		.then(response=>
 		{
-			if(response.status === 200)
+			if(response.ok)
 			{
 				document.querySelector(`#id${el.dataset.id}`).remove();
-				let buyBtn = document.querySelector(`[data-id="${el.dataset.id}"]`);
-				if(buyBtn)
+				let buyBtns = document.querySelectorAll(`.jsBuy_link.id${el.dataset.id}`);
+				if(buyBtns)
 				{
-					buyBtn.classList.remove('card__add-to-cart--more');
-					buyBtn.innerText = 'беру!';
+					buyBtns.forEach(buyBtn =>
+					{
+						buyBtn.classList.remove('card__add-to-cart--more');
+						buyBtn.innerText = 'беру!';
+					});
 				}
 				delete arrProducts[el.dataset.id];
+			}
+			else
+			{
+				LoadingIcon.Hide();
+				alert('Fatal error! Everything dying!');
+				return false;
 			}
 		});
 		UpdateBasket();
@@ -393,6 +423,7 @@ document.addEventListener('DOMContentLoaded', () =>
 		{
 			arrProducts[eId] = (eQuant + 1).toString();
 			UpdateHandler(eId, (eQuant + 1).toString());
+			GlobAimation(e.target);
 		}
 		else
 		{
@@ -401,10 +432,24 @@ document.addEventListener('DOMContentLoaded', () =>
 			{
 				if(response.status == 200)
 				{
-					e.target.classList.add('card__add-to-cart--more');
-					e.target.innerText = 'беру еще!';
+					let buyBtns = document.querySelectorAll(`.jsBuy_link.id${eId}`);
+					if(buyBtns)
+					{
+						buyBtns.forEach(buyBtn =>
+						{
+							buyBtn.classList.add('card__add-to-cart--more');
+							buyBtn.innerText = 'беру еще!';
+						});
+					}
 					arrProducts[eId] = '1';
 					UpdateBasket();
+					GlobAimation(e.target);
+				}
+				else
+				{
+					LoadingIcon.Hide();
+					alert('Fatal error! Everything dying!');
+					return false;
 				}
 			});
 		}
@@ -426,13 +471,60 @@ document.addEventListener('DOMContentLoaded', () =>
 		arrProducts[e.target.dataset.id] = e.target.value;
 		UpdateHandler(e.target.dataset.id, e.target.valueAsNumber);
 	}
-	/* основная функция для работы корзины типо class, сделано так для того, чтобы при каждом изменении подгружать компонент снова, да это не оптимально,
-	зато упрощается процесс разработки и избавляет от ошибок З.Ы. ф-нкция была изменена и уже не полностью соответствует описанию*/
+	const WokDeleteHandler = e =>
+	{
+		fetch(`${actionUrl}?action=update&id=${e.target.dataset.id}&quant=0`);
+		UpdateBasket();
+	}
+
+	const GlobAimation = (element) =>
+	{
+		let rect = element.getBoundingClientRect();
+		let curPos = [rect.x, rect.y];
+		rect = basketToggler.getBoundingClientRect();
+		let endPos = [rect.x, rect.y];
+		glob.style.left = curPos[0];
+		glob.style.top = curPos[1];
+		glob.classList.remove('hide');
+		let difX = endPos[0] - curPos[0];
+		let difY = endPos[1] - curPos[1];
+		let speedX = difX / 0.4;
+		let speedY = difY / 0.4;
+		let fps = 240;
+		// console.log(curPos)
+		// console.log(endPos)
+		// console.log(difX)
+		// console.log(difY)
+		// console.log(speedX)
+		// console.log(speedY)
+		let frame;
+		frame = window.setInterval(() => 
+		{
+			if(curPos[0] >= endPos[0] && curPos[1] <= endPos[1])
+			{
+				clearInterval(frame);
+				glob.classList.add('hide');
+			}
+			glob.style.left = `${curPos[0]}px`;
+			glob.style.top = `${curPos[1]}px`;
+			curPos[0] += speedX / fps;
+			curPos[1] += speedY / fps;
+		}, 1000 / fps);
+	}
+
+	/**
+	 * Основная функция для работы корзины типо class, сделано так для того, чтобы при каждом изменении подгружать компонент снова, да это не оптимально, зато упрощается процесс разработки и избавляет от ошибок З.Ы. ф-нкция была изменена и уже не полностью соответствует описанию
+	 *
+	 */
 	function Basket()
 	{
 		const basketClose = document.querySelectorAll('.jsBasketClose');
 		// если есть эта нода значит в корзине есть товар
 		const basketFlag = document.querySelector('#basketFlag');
+		//скрытый див в который компонент вставляет текущее количество товаров в корзине
+		let basketItemsQuant = document.querySelector('#basketItemsQuant').dataset.value;
+		//скрытый див в который компонент вставляет общую цену корзины
+		let basketAllSum = document.querySelector('.jsBasketPrice').dataset.value;
 		// "Перенаходим" кнопки добавления товара в корзину, что бы найти новые кнопки товаров в самой корзине, да и так прост на всякий случай
 		buyBtns = document.querySelectorAll('.jsBuy_link');
 		if(basketFlag)// если в корзине есть товар, то получаем элементы управления товаров
@@ -441,27 +533,25 @@ document.addEventListener('DOMContentLoaded', () =>
 			const decBtns = document.querySelectorAll('.jsDecrement');
 			const deleteBtns = document.querySelectorAll('.jsDelBtn');
 			const curQuant = document.querySelectorAll('.jsCurQuant');
-			//скрытый див в который компонент вставляет текущее количество товаров в корзине
-			let basketItemsQuant = document.querySelector('#basketItemsQuant').dataset.value;
-			//скрытый див в который компонент вставляет общую цену корзины
-			let basketAllSum = document.querySelector('.jsBasketPrice').dataset.value;
+			const wokDelBtns = document.querySelectorAll('.jsWokDelBtn');
+			
 			//товары в корзине
 			const products = document.querySelectorAll('.jsProduct');
 
 			products.forEach(p=>arrProducts[p.dataset.id] = p.dataset.quant);
 			incBtns.forEach(btn=>btn.addEventListener('click', IncBtnHandler));
 			decBtns.forEach(btn=>btn.addEventListener('click', DecBtnHandler));
-			deleteBtns.forEach(btn=>btn.addEventListener('click', e=> DelHandler(e.target)));
+			deleteBtns.forEach(btn=>btn.addEventListener('click', e => DelHandler(e.target)));
 			curQuant.forEach(el=>el.addEventListener('change', CurQuantHandler));
-			//обновляем элементы в шапке
-			smallBasketQuant.innerText = basketItemsQuant;
-			smallBasketPrice.innerText = basketAllSum;
-			smallBasketPrice.dispatchEvent(updateBasketEvent);
+			if(wokDelBtns)wokDelBtns.forEach(btn=>btn.addEventListener('click', WokDeleteHandler));
 		}
+		//обновляем элементы в шапке
+		smallBasketQuant.innerText = basketItemsQuant;
+		smallBasketPrice.innerText = basketAllSum;
 		basketClose.forEach(btn => btn.addEventListener('click', BasketDisplayToggle));
+		buyBtns.forEach(btn => btn.addEventListener('click', BuyBtnHandler));
 		return arrProducts;
 	}
-	buyBtns.forEach(btn => btn.addEventListener('click', BuyBtnHandler));
 	basketToggler.addEventListener('click', BasketDisplayToggle);
 	// инициализация корзины
 	var promise1 = new Promise(resolve=>resolve(Basket()));
@@ -493,17 +583,20 @@ document.addEventListener('DOMContentLoaded', () =>
 		let wokPicture = document.querySelector('#wokPicture');
 		const simpleTemplate = document.querySelector('#simpleTemplate .create-wok__output-item');
 		const controlsTemplate = document.querySelector('#controlsTemplate .create-wok__output-item');
-		const wokForm = document.querySelector('#wokForm');
+		const wokResetBtn = document.querySelector('.js-wok-reset');
+		const wokSumPriceView = document.querySelector('#jsWokSumPriceValue');
+		const basePrice = document.querySelector('#basePrice');
+		let sumPrice = basePrice.dataset.value;
 		let wokFormSubmit = document.querySelector('#wokFormSubmit');
 		let wokFormItemsList = document.querySelector('#wokFormItemsList');
 		let baseName = document.querySelector('#baseName');
 		let baseDescription = document.querySelector('#baseDescription');
-		let basePrice = document.querySelector('#basePrice');
 		let newOutputItem = undefined;
 		let wokImg = undefined;
 		let sauceItem = undefined;
 		let wokIncrBtns = undefined;
 		let wokDecrBtns = undefined;
+		let ItemPrices = undefined;
 		let check = 0;
 		let itemsIds = {
 			base: '',
@@ -511,13 +604,20 @@ document.addEventListener('DOMContentLoaded', () =>
 			filling: [],
 			extra: []
 		};
+		
 		const wokIncBtnHandler = (e) =>
 		{
 			if(groups[e.target.dataset.section] == 2)
+			{
+				ShowTooltip(e, 'Нельзя добавить больше двух');
 				return;
+			}
 			itemsIds[e.target.dataset.section].push(e.target.dataset.id);
 			groups[e.target.dataset.section]++;
 			e.target.previousElementSibling.value = '2';
+			let localItemPrice = document.querySelector(`#oiid${e.target.dataset.id} .jsItemPrice`);
+			if(localItemPrice)localItemPrice.innerText = `${parseInt(localItemPrice.innerText) * 2} ₽`;
+			WokRecalcSumPrice();
 		}
 		const wokDecBtnHandler = (e) =>
 		{
@@ -531,6 +631,9 @@ document.addEventListener('DOMContentLoaded', () =>
 			itemsIds[e.target.dataset.section].splice(itemsIds[e.target.dataset.section].indexOf(e.target.dataset.id), 1);
 			groups[e.target.dataset.section]--;
 			e.target.nextElementSibling.value = '1';
+			let localItemPrice = document.querySelector(`#oiid${e.target.dataset.id} .jsItemPrice`);
+			if(localItemPrice)localItemPrice.innerText = `${parseInt(localItemPrice.innerText) / 2} ₽`;
+			WokRecalcSumPrice();
 		}
 		const wokControlsChange = () =>
 		{
@@ -539,6 +642,31 @@ document.addEventListener('DOMContentLoaded', () =>
 			wokIncrBtns.forEach(btn => btn.addEventListener('click', wokIncBtnHandler));
 			wokDecrBtns.forEach(btn => btn.addEventListener('click', wokDecBtnHandler));
 		}
+		const WokReset = () =>
+		{
+			if(wokConsistBtn)
+			{
+				wokConsistBtn[0].click();
+				wokConsistBtn.forEach(btn =>
+				{
+					if(btn.checked == true || btn.dataset.price == '0')
+						btn.click();
+				});
+			}
+			else
+				throw 'variable wokConsistBtn undefined or null or something else wrong!';
+		}
+		const WokRecalcSumPrice = () =>
+		{
+			sumPrice = 0;
+			ItemPrices = document.querySelectorAll('.jsItemPrice');
+			
+			ItemPrices.forEach(item => 
+			{
+				sumPrice += parseInt(item.innerText);
+			});
+			wokSumPriceView.innerText = `${sumPrice} ₽`;
+		}
 		const WokConsistHandler = (e) =>
 		{
 			if(e.target.checked)
@@ -546,6 +674,7 @@ document.addEventListener('DOMContentLoaded', () =>
 				if(groups[e.target.name] == 2)
 				{
 					e.preventDefault();
+					ShowTooltip(e, 'Нельзя добавить больше двух');
 					return;
 				}
 				else if(e.target.type != 'radio')
@@ -586,7 +715,6 @@ document.addEventListener('DOMContentLoaded', () =>
 						sauceItem.querySelector('.jsItemPrice').innerText = `${e.target.dataset.price} ₽`;
 						itemsIds['sauce'] = (e.target.id == 'huita2') ? '' : e.target.dataset.id;
 						break;
-
 				}
 			}
 			else
@@ -605,13 +733,16 @@ document.addEventListener('DOMContentLoaded', () =>
 				if(ebaaat.length == 0)
 					groups[e.target.name] = 0;
 			}
+			WokRecalcSumPrice();
 		}
+
 		wokConsistBtn.forEach(el =>
 		{
 			groups[el.name] = 0;
 			el.addEventListener('click', WokConsistHandler);
 		});
 		itemsIds['base'] = baseName.dataset.id;
+
 		const WokFormHandler = (e =>
 		{
 			e.preventDefault();
@@ -629,8 +760,8 @@ document.addEventListener('DOMContentLoaded', () =>
 			{
 				if(response.ok)
 				{
-					alert('Wok add successful');
-					wokForm.reset();
+					WokReset();
+					UpdateBasket();
 				}
 				else
 					alert('Server error!');
@@ -638,6 +769,18 @@ document.addEventListener('DOMContentLoaded', () =>
 			});
 		});
 		wokFormSubmit.addEventListener('click', WokFormHandler);
+		wokResetBtn.addEventListener('click', WokReset);
+		wokPicture.addEventListener('click', (e)=>
+		{
+			// let t1 = performance.now();
+			// let elById = document.querySelector('#wokFormSubmit');
+			// let t2 = performance.now();
+			// let t3 = performance.now();
+			// let elByClass = document.querySelector('.wokForm__submit');
+			// let t4 = performance.now();
+			// console.log(t2-t1);
+			// console.log(t4-t3);
+		});
 	}
 	//#endregion wok
 
@@ -687,7 +830,6 @@ document.addEventListener('DOMContentLoaded', () =>
 					return true;
 				else
 					return !true;
-
 			})
 			.then(flag =>
 			{
@@ -704,7 +846,7 @@ document.addEventListener('DOMContentLoaded', () =>
 			});
 		}
 		addGiftBtns.forEach(btn=>btn.addEventListener('click', GiftBtnHandler));
-		basketOrderBtn.addEventListener('click', BasketOrderBtnHandler);
+		if(basketOrderBtn)basketOrderBtn.addEventListener('click', BasketOrderBtnHandler);
 	}
 
 	const CancelBtnHandler = () =>
@@ -760,25 +902,24 @@ document.addEventListener('DOMContentLoaded', () =>
 			bonusesApplyBtn.addEventListener('click', bonusesApply);
 
 			const priceContainer = document.querySelector('.order-form__total');
-			const oldPrice = document.querySelector('.order-form__total-price--old');
-			const totalPriceTitle = document.querySelector('.order-form__total-price-title');
-			const totalPriceTitleText = totalPriceTitle.textContent;
 			const actualPrice = document.querySelector('.order-form__total-price--important');
+			const priceBleat = document.querySelector('.jsPriceBleat');
+			const newPrice = document.querySelector('.order-form__total-price--new');
 			const renderPrice = () =>
 			{
 				const bonuses = Number(document.querySelector('.bonuses__data--small input').value);
 				const price = Number(priceContainer.dataset.price) - bonuses;
 				if(bonuses > 0)
 				{
-					oldPrice.style.display = 'block';
-					totalPriceTitle.textContent = 'Сумма со скидкой';
+					priceBleat.classList.add('order-form__total-price--old');
+					newPrice.classList.remove('hide');
 					actualPrice.innerHTML = price.toLocaleString() + ' руб.';
 				}
 				else
 				{
-					oldPrice.style.display = 'none';
+					priceBleat.classList.remove('order-form__total-price--old');
 					actualPrice.innerHTML = price.toLocaleString() + ' руб.';
-					totalPriceTitle.textContent = totalPriceTitleText;
+					newPrice.classList.add('hide');
 				}
 			}
 		}
@@ -799,7 +940,6 @@ document.addEventListener('DOMContentLoaded', () =>
 				minDate: 'today',
 				maxDate: new Date().fp_incr(14) // 14 days from now
 			});
-
 			flatpickr(timeInput, {
 				"locale": "ru",
 				enableTime: true,
@@ -815,9 +955,10 @@ document.addEventListener('DOMContentLoaded', () =>
 	//#endregion input date
 
     //#region Order
-	const orderTabs = document.querySelector('.orderTabs');
+	// const orderTabs = document.querySelector('.orderTabs');
+	// const addPromo = document.querySelector('#addPromo');
 	const orderFrom = document.querySelector('#orderForm');
-	const addPromo = document.querySelector('#addPromo');
+	const orderFormFast = document.querySelector('#orderFormFast');
 	let parser = new DOMParser();
 	const UpdateOrder = () =>
 	{
@@ -840,7 +981,7 @@ document.addEventListener('DOMContentLoaded', () =>
 		});
 	}
 	if(orderFrom)
-	{
+	{		
 		const OrderFormHandler = (e) =>
 		{
 			e.preventDefault();
@@ -848,35 +989,56 @@ document.addEventListener('DOMContentLoaded', () =>
 			const form = e.target;
 			const formData = new FormData(form);
 			let promocode = formData.get('promocode');
-			if(promocode.length > 0)
+			if(promocode && promocode.length > 0)
 			{
 				formData.append('addCoupon', 'true');
 				formData.set('addOrder', '');
-				
 			}
 			fetch('/local/inc_files/order.php', {method: form.method, body: formData})
 			.then(response=>
 			{
 				if(response.ok)
 				{
-					if(promocode.length > 0)
+					if(promocode && promocode.length > 0)
 						UpdateOrder();
 					else
-						document.location.href = '/order/thanks/';
+						return response.text();
 				}
 				else
 				{
 					alert('Server response with error? Please Try again.\nОшибка сервера, пожалуйста попробуйте еще раз.');
 					document.location.reload();
 				}
-
+			})
+			.then(text =>
+			{
+				LoadingIcon.Hide();
+				let parser = new DOMParser();
+				let resp = parser.parseFromString(text, "text/html");
+				let orderErrors = resp.querySelector('#orderErrors');
+				let newUser = resp.querySelector('#newUser');
+				let btn = form.querySelector('.jsFormSubmit');
+				let thanksHref = '/order/thanks/';
+				if(form.name == 'fastOrder')
+					thanksHref += '?fast_order=true';
+				if(newUser)
+					thanksHref += '?new_user=true';
+				if(orderErrors)
+					ShowTooltip(btn, orderErrors.innerHTML, 5000);
+				else
+					window.location.href = thanksHref;
 			});
 		}
 		orderFrom.addEventListener('submit', OrderFormHandler);
+		orderFormFast.addEventListener('submit', OrderFormHandler);
 		document.addEventListener('updateBasketEvent', UpdateOrder);
 	}
+	
 	//#endregion Order
-
+	// document.addEventListener('mouseover', (e)=>
+	// {
+	// 	console.log(e);
+	// });
 	//#region account
 	let accEditable = document.querySelectorAll('.accEditable');
 	let editAccDataBtn = document.querySelector('#editAccData');
@@ -961,4 +1123,62 @@ document.addEventListener('DOMContentLoaded', () =>
 		editAccPassBtn.addEventListener('click', EditAccPassBtnHandler);
 	}
 	//#endregion account
+
+	/**
+	 * Находит первого родителя у которого есть переданый класс. Возвращает елемент как ноду или undefined 
+	 * @node {node} Элемент
+	 * @className {string} Класс искомого родителя
+	 */
+	const FindParentWithClass = (node, className)=>
+	{
+		if(node.parentNode === null)
+			return undefined;
+		if(node.parentNode.classList.contains(className))
+			return node.parentNode;
+		return FindParentWithClass(node.parentNode, className);
+	}
+
+	//#region pizza
+	const pizza_exist = document.querySelector('.pizza_exist');
+	if(pizza_exist)
+	{
+		const pizzaSizeBtns = document.querySelectorAll('.jsPizzaSizeBtn');
+		const PizzaChange = (nodeList, id) =>
+		{
+			nodeList.forEach(node=>
+			{
+				if (node.classList.contains(`id${id}`)) node.classList.remove('hide');
+				else node.classList.add('hide');
+			});
+		}
+		const PizzaBtnHandlers = (event) =>
+		{
+			let btn = event.currentTarget;
+			let pizzaId = btn.dataset.id;
+			if(btn.classList.contains('activeSize'))
+				return;
+			btn.classList.add('activeSize');
+			if(btn.previousElementSibling === null)
+				btn.nextElementSibling.classList.remove('activeSize');
+			else
+				btn.previousElementSibling.classList.remove('activeSize');
+			let pizzaCatalogItem = FindParentWithClass(btn, 'jsCatalogItem');
+			let pizzaPrices = pizzaCatalogItem.querySelectorAll('.jsPizzaPrice');
+			pizzaCatalogItem.querySelector('.jsItemWeight').innerText = btn.dataset.weight;
+			let pizzaBuyBtns = pizzaCatalogItem.querySelectorAll('.jsPizzaBuyBtn');
+			PizzaChange(pizzaPrices, pizzaId);
+			PizzaChange(pizzaBuyBtns, pizzaId);
+		}
+		pizzaSizeBtns.forEach(btn=>btn.addEventListener('click', PizzaBtnHandlers));
+	}
+	//#endregion pizza
+
+	// let vkShareBtns = document.querySelectorAll('.vkShareBtn');
+	// if(vkShareBtns)
+	// {
+	// 	vkShareBtns.forEach(btn=>
+	// 	{
+	// 		btn.innerHTML = btn.innerHTML + VK.Share.button(window.location.href, {type: 'link'});
+	// 	});
+	// }
 });

@@ -5,23 +5,22 @@ ErrorDocument 404 /404.php
 	php_flag allow_call_time_pass_reference 1
 	php_flag session.use_trans_sid off
 	php_value mbstring.func_overload 2
-	php_value mbstring.internal_encoding UTF-8
+	php_value default_charset UTF-8
+	php_value default_socket_timeout 60
+	php_value max_input_vars 1500000
 	php_value display_errors 1
 </IfModule>
 
 <IfModule mod_rewrite.c>
 	Options +FollowSymLinks
 	RewriteEngine On
-
-	# RewriteCond %{REQUEST_FILENAME} ^http://butorin-e-v1\.myjino\.ru/hui_pizda_govno$
-	RewriteRule ^http://butorin-e-v1\.myjino\.ru/hui_pizda_govno$ http://butorin-e-v1.myjino.ru [R=301,L]
-
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-l
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
 	RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
 	RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+	
 </IfModule>
 
 <IfModule mod_dir.c>

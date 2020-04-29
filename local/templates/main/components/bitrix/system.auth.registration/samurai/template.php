@@ -21,7 +21,7 @@ if($arResult["SHOW_SMS_FIELD"] == true)
 	CJSCore::Init('phone_auth');
 }
 ?>
-<div class="bx-auth trololo">
+<div class="bx-auth trololo container">
 <?
 ShowMessage($arParams["~AUTH_RESULT"]);
 ?>
@@ -97,19 +97,19 @@ new BX.PhoneAuth({
 	<tbody>
 		<tr>
 			<td><?=GetMessage("AUTH_NAME")?></td>
-			<td><input type="text" name="USER_NAME" maxlength="50" value="<?=$arResult["USER_NAME"]?>" class="bx-auth-input" /></td>
+			<td><input type="text" name="USER_NAME" maxlength="50" value="<?=$arResult["USER_NAME"]?>" class="bx-auth-input input authInput" /></td>
 		</tr>
 		<tr>
 			<td><?=GetMessage("AUTH_LAST_NAME")?></td>
-			<td><input type="text" name="USER_LAST_NAME" maxlength="50" value="<?=$arResult["USER_LAST_NAME"]?>" class="bx-auth-input" /></td>
+			<td><input type="text" name="USER_LAST_NAME" maxlength="50" value="<?=$arResult["USER_LAST_NAME"]?>" class="bx-auth-input input authInput" /></td>
 		</tr>
 		<tr>
 			<td><span class="starrequired">*</span><?=GetMessage("AUTH_LOGIN_MIN")?></td>
-			<td><input type="text" name="USER_LOGIN" maxlength="50" value="<?=$arResult["USER_LOGIN"]?>" class="bx-auth-input" /></td>
+			<td><input type="text" name="USER_LOGIN" maxlength="50" value="<?=$arResult["USER_LOGIN"]?>" class="bx-auth-input input authInput" /></td>
 		</tr>
 		<tr>
 			<td><span class="starrequired">*</span><?=GetMessage("AUTH_PASSWORD_REQ")?></td>
-			<td><input type="password" name="USER_PASSWORD" maxlength="50" value="<?=$arResult["USER_PASSWORD"]?>" class="bx-auth-input" autocomplete="off" />
+			<td><input type="password" name="USER_PASSWORD" maxlength="50" value="<?=$arResult["USER_PASSWORD"]?>" class="bx-auth-input input authInput" autocomplete="off" />
 <?if($arResult["SECURE_AUTH"]):?>
 				<span class="bx-auth-secure" id="bx_auth_secure" title="<?echo GetMessage("AUTH_SECURE_NOTE")?>" style="display:none">
 					<div class="bx-auth-secure-icon"></div>
@@ -127,20 +127,20 @@ document.getElementById('bx_auth_secure').style.display = 'inline-block';
 		</tr>
 		<tr>
 			<td><span class="starrequired">*</span><?=GetMessage("AUTH_CONFIRM")?></td>
-			<td><input type="password" name="USER_CONFIRM_PASSWORD" maxlength="50" value="<?=$arResult["USER_CONFIRM_PASSWORD"]?>" class="bx-auth-input" autocomplete="off" /></td>
+			<td><input type="password" name="USER_CONFIRM_PASSWORD" maxlength="50" value="<?=$arResult["USER_CONFIRM_PASSWORD"]?>" class="bx-auth-input input authInput" autocomplete="off" /></td>
 		</tr>
 
 <?if($arResult["EMAIL_REGISTRATION"]):?>
 		<tr>
 			<td><?if($arResult["EMAIL_REQUIRED"]):?><span class="starrequired">*</span><?endif?><?=GetMessage("AUTH_EMAIL")?></td>
-			<td><input type="text" name="USER_EMAIL" maxlength="255" value="<?=$arResult["USER_EMAIL"]?>" class="bx-auth-input" /></td>
+			<td><input type="text" name="USER_EMAIL" maxlength="255" value="<?=$arResult["USER_EMAIL"]?>" class="bx-auth-input input authInput" /></td>
 		</tr>
 <?endif?>
 
 <?if($arResult["PHONE_REGISTRATION"]):?>
 		<tr>
 			<td><?if($arResult["PHONE_REQUIRED"]):?><span class="starrequired">*</span><?endif?><?echo GetMessage("main_register_phone_number")?></td>
-			<td><input type="text" name="USER_PHONE_NUMBER" maxlength="255" value="<?=$arResult["USER_PHONE_NUMBER"]?>" class="bx-auth-input" /></td>
+			<td><input type="text" name="USER_PHONE_NUMBER" maxlength="255" value="<?=$arResult["USER_PHONE_NUMBER"]?>" class="bx-auth-input input authInput" /></td>
 		</tr>
 <?endif?>
 
@@ -210,7 +210,7 @@ document.getElementById('bx_auth_secure').style.display = 'inline-block';
 	<tfoot>
 		<tr>
 			<td></td>
-			<td><input type="submit" name="Register" value="<?=GetMessage("AUTH_REGISTER")?>" /></td>
+			<td><input type="submit" name="Register" value="<?=GetMessage("AUTH_REGISTER")?>" class="btn btn-primary"></td>
 		</tr>
 	</tfoot>
 </table>
@@ -220,7 +220,7 @@ document.getElementById('bx_auth_secure').style.display = 'inline-block';
 <p><?echo $arResult["GROUP_POLICY"]["PASSWORD_REQUIREMENTS"];?></p>
 <p><span class="starrequired">*</span><?=GetMessage("AUTH_REQ")?></p>
 
-<p><a href="<?=$arResult["AUTH_AUTH_URL"]?>" rel="nofollow"><b><?=GetMessage("AUTH_AUTH")?></b></a></p>
+<p><a href="<?=$arResult["AUTH_AUTH_URL"]?>" rel="nofollow" class="info__city-name"><b><?=GetMessage("AUTH_AUTH")?></b></a></p>
 
 <script type="text/javascript">
 document.bform.USER_NAME.focus();

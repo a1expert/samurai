@@ -49,6 +49,22 @@ $this->setFrameMode(true);
                 $id = current($arItem['OFFERS'])['ID'];
                 $price = current($arItem['OFFERS'])['PRICES']['RESULT_PRICE']['BASE_PRICE'];
                 $discountPrice = ($arItem['OFFERS'][0]['PRICES']['IS_DISCOUNT']) ? $arItem['OFFERS'][0]['PRICES']['DISCOUNT_PRICE'] : false;
+                //Pizza
+                if(!empty($arItem['OFFERS'][0]['PROPERTIES']['PIZZA_SIZE']['VALUE']))
+                {
+                    $is_pizza = true;
+                    foreach ($arItem['OFFERS'] as $offer)
+                    {
+                        $pizzas[] =
+                        [
+                            'id' => $offer['ID'],
+                            'price' => $offer['PRICES']['RESULT_PRICE']['BASE_PRICE'],
+                            'discountPrice' => ($offer['PRICES']['IS_DISCOUNT']) ? $offer['PRICES']['DISCOUNT_PRICE'] : false,
+                            'size' => $offer['PROPERTIES']['PIZZA_SIZE']['VALUE'],
+                            'weight' => $offer['CATALOG_WEIGHT']
+                        ];
+                    }
+                }
             }
             else
                 $id = $arItem['ID'];
@@ -87,8 +103,8 @@ $this->setFrameMode(true);
                                 <h3 class="card__title"><?=$arItem['NAME'];?></h3>
                             </a>
                             <ul class="card__chars">
-                                <li class="card__chars-item card__chars-item--main card__chars-item--weight"><?=$arItem['DISPLAY_PROPERTIES']['WEIGHT']['DISPLAY_VALUE'];?></li>
-                                <?if(!empty($arItem['DISPLAY_PROPERTIES']['ROLLS_COUNT']['DISPLAY_VALUE']) && $arResult['SECTION']['PATH'][0]['ID'] == 1)
+                                <li class="card__chars-item card__chars-item--main card__chars-item--weight jsItemWeight"><?=(empty($arItem['CATALOG_WEIGHT']))?$arItem['DISPLAY_PROPERTIES']['WEIGHT']['DISPLAY_VALUE']:$arItem['CATALOG_WEIGHT'];?></li>
+                                <?if(!empty($arItem['DISPLAY_PROPERTIES']['ROLLS_COUNT']['DISPLAY_VALUE']))
                                 {?>
                                     <li class="card__chars-item card__chars-item--main card__chars-item--quantity"><?=$arItem['DISPLAY_PROPERTIES']['ROLLS_COUNT']['DISPLAY_VALUE']?></li>
                                     <?
@@ -106,21 +122,57 @@ $this->setFrameMode(true);
                                     }
                                 }?>  
                             </ul>
-                            <div class="card__footer">
-                                <div class="card__price">
-                                    <p class="card__priceP <?=($discountPrice)?'card__priceP-old':'';?>"><?=$price;?> <span class="currency">₽</span></p>
-                                    <p class="card__priceP card__priceP-discount <?=(!$discountPrice)?'hide':'';?>"><?=$discountPrice;?> <span class="currency">₽</span></p>
+                            <?if($is_pizza)
+                            {?>
+                                <div style="display:none!important;" class="pizza_exist"></div>
+                                <div class="card__pizzaSize">
+                                <?foreach ($pizzas as $i => $pizza)
+                                {
+                                    //ни до ни после этого дива ничего не вставлять(теги)!!! Либо лезь в жс файл и меняй там функционал кнопок!!! Говнокод рулит!?>
+                                    <div class="pizzaSize <?=($i == 0)?'pizzaSize-first activeSize' : 'pizzaSize-second';?> jsPizzaSizeBtn" data-id="<?=$pizza['id'];?>" data-weight="<?=$pizza['weight'];?> гр">
+                                        <span class="pizza__sizeValue"><?=$pizza['size'];?> см</span>
+                                    </div>
+                                    <?if($i > 1)break;//Макетом не предусмотренно больше двух размеров пиццы
+                                }?>
                                 </div>
-                                <div class="card__add-to-cart jsBuy_link" data-id="<?=$id?>">Беру!</div>
-                            </div>
+                                <div class="card__footer">
+                                <?foreach ($pizzas as $i => $pizza)
+                                {?>
+                                    <div class="card__price <?=($i == 0)?'' : 'hide';?> jsPizzaPrice id<?=$pizza['id'];?>">
+                                        <p class="card__priceP <?=($pizza['discountPrice'])?'card__priceP-old':'';?>"><?=$pizza['price'];?> <span class="currency">₽</span></p>
+                                        <p class="card__priceP card__priceP-discount <?=(!$pizza['discountPrice'])?'hide':'';?>"><?=$pizza['discountPrice'];?> <span class="currency">₽</span></p>
+                                    </div>
+                                    <div class="card__add-to-cart jsBuy_link <?=($i == 0)?'' : 'hide';?> jsPizzaBuyBtn id<?=$pizza['id'];?>" data-id="<?=$pizza['id'];?>">Беру!</div>
+                                    <?if($i > 1)break;//Макетом не предусмотренно больше двух размеров пиццы                                    
+                                }?>
+                                </div>
+                                <?
+                                unset($pizzas);
+                                $is_pizza = false;
+                            }
+                            else
+                            {?>
+                                <div class="card__footer">
+                                    <div class="card__price">
+                                        <p class="card__priceP <?=($discountPrice)?'card__priceP-old':'';?>"><?=$price;?> <span class="currency">₽</span></p>
+                                        <p class="card__priceP card__priceP-discount <?=(!$discountPrice)?'hide':'';?>"><?=$discountPrice;?> <span class="currency">₽</span></p>
+                                    </div>
+                                    <div class="card__add-to-cart jsBuy_link id<?=$id?>" data-id="<?=$id?>">Беру!</div>
+                                </div>
+                                <?
+                            }?>
                         </div>
                         <div class="card__social">
                             <p class="card__social-label">Поделитесь с друзьями:</p>
-                            <a href="#" aria-label="вконтакте" class="card__social-link">
+                            <a href="https://vk.com/share.php?<?
+                                ?>title=<?=urlencode($arItem['NAME'])?>&<?
+                                ?>image=<?=$_SERVER['HTTP_X_FORWARDED_PROTOCOL']?>://<?=$_SERVER['HTTP_HOST']?><?=$arItem['DETAIL_PICTURE'];?>&<?
+                                ?>url=<?=$_SERVER['HTTP_X_FORWARDED_PROTOCOL']?>://<?=$_SERVER['HTTP_HOST']?><?=preg_split('/\?/', $_SERVER['REQUEST_URI'])[0]?>" target="_blank" aria-label="ВКонтакте" class="card__social-link" rel="nofollow">
                                 <svg xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <use xlink:href="/local/assets/images/icon.svg#icon_vk"></use>
                                 </svg>
                             </a>
+                            <?/*
                             <a href="#" aria-label="facebook" class="card__social-link">
                                 <svg xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <use xlink:href="/local/assets/images/icon.svg#icon_facebook"></use>
@@ -130,7 +182,7 @@ $this->setFrameMode(true);
                                 <svg xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <use xlink:href="/local/assets/images/icon.svg#icon_odnoklassniki"></use>
                                 </svg>
-                            </a>
+                            </a>*/?>
                         </div>
                     </article>
                 </li>

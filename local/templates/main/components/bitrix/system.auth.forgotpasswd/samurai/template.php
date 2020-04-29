@@ -3,7 +3,7 @@
 ShowMessage($arParams["~AUTH_RESULT"]);
 
 ?>
-<form class="trololo" name="bform" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
+<form class="trololo container" name="bform" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
 <?
 if (strlen($arResult["BACKURL"]) > 0)
 {
@@ -20,7 +20,7 @@ if (strlen($arResult["BACKURL"]) > 0)
 	<div style="margin-top: 16px">
 		<div><b><?=GetMessage("sys_forgot_pass_login1")?></b></div>
 		<div>
-			<input type="text" name="USER_LOGIN" value="<?=$arResult["LAST_LOGIN"]?>" />
+			<input type="text" name="USER_LOGIN" value="<?=$arResult["LAST_LOGIN"]?>" class="input forgotInput">
 			<input type="hidden" name="USER_EMAIL" />
 		</div>
 		<div><?echo GetMessage("sys_forgot_pass_note_email")?></div>
@@ -46,13 +46,13 @@ if (strlen($arResult["BACKURL"]) > 0)
 	</div>
 <?endif?>
 	<div style="margin-top: 20px">
-		<input type="submit" name="send_account_info" value="<?=GetMessage("AUTH_SEND")?>" />
+		<input type="submit" name="send_account_info" value="<?=GetMessage("AUTH_SEND")?>" class="btn btn-primary" />
+	</div>
+	<div style="margin-top: 16px">
+		<p><a href="<?=$arResult["AUTH_AUTH_URL"]?>" class="info__city-name"><b><?=GetMessage("AUTH_AUTH")?></b></a></p>
 	</div>
 </form>
 
-<div style="margin-top: 16px">
-	<p><a href="<?=$arResult["AUTH_AUTH_URL"]?>"><b><?=GetMessage("AUTH_AUTH")?></b></a></p>
-</div>
 
 <script type="text/javascript">
 document.bform.onsubmit = function(){document.bform.USER_EMAIL.value = document.bform.USER_LOGIN.value;};

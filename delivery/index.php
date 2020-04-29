@@ -20,9 +20,8 @@ $APPLICATION->SetTitle("Условия доставки");
                     <div>
                         <h4 class="delivery-advantages__title">Быстрая доставка от 40 минут*</h4>
                         <p class="delivery-advantages__text">
-                            У нас одна из самых быстрых доставок в Москве. Если Вы оформили заказ на сайте или
+                            У нас одна из самых быстрых доставок. Если Вы оформили заказ на сайте или
                             в мобильном приложении - Вы будете точно знать время получения заказа.
-                            Принимаем и доставляем заказы с 10:30 до 23:30 Принимаем и доставляем заказы с 10:30 до 23:30 Принимаем и доставляем заказы с 10:30 до 23:30 Принимаем и доставляем заказы с 10:30 до 23:30
                         </p>
                     </div>
                 </li>
@@ -45,9 +44,7 @@ $APPLICATION->SetTitle("Условия доставки");
 </section>
 <section class="section main__section payment-info">
     <div class="container">
-        <h2 class="section__title">
-            Способы оплаты
-        </h2>
+        <h2 class="section__title">Способы оплаты</h2>
         <ul class="payment-info__list">
             <li class="payment-info__item payment-info__item--card">
                 <h3 class="payment-info__title">Банковской картой</h3>
@@ -69,11 +66,11 @@ $APPLICATION->SetTitle("Условия доставки");
     <div class="container">
         <div class="section__layout delivery-price__layout">
             <p class="delivery-price__alert">
-                Доставка по городу <span class="delivery-price__important">бесплатная</span> при заказе от 900 руб
+                Доставка по городу <span class="delivery-price__important">бесплатная</span> при заказе от 500 руб
             </p>
             <div class="delivery-price__column">
+            		<h3 class="delivery-price__item delivery-price__item--title">150 рублей</h3>
                 <ul class="delivery-price__list">
-                    <li class="delivery-price__item delivery-price__item--title">150 рублей</li>
                     <li class="delivery-price__item">Нефтеюганское шоссе</li>
                     <li class="delivery-price__item">Югорский тракт</li>
                     <li class="delivery-price__item">поселок Кедровый</li>
@@ -87,8 +84,8 @@ $APPLICATION->SetTitle("Условия доставки");
                 </ul>
             </div>
             <div class="delivery-price__column">
+            		<h3 class="delivery-price__item delivery-price__item--title">150 рублей</h3>
                 <ul class="delivery-price__list">
-                    <li class="delivery-price__item delivery-price__item--title">150 рублей</li>
                     <li class="delivery-price__item">поселок Таежный</li>
                     <li class="delivery-price__item">Аэропорт</li>
                     <li class="delivery-price__item">поселок Снежный</li>
@@ -97,13 +94,15 @@ $APPLICATION->SetTitle("Условия доставки");
                 </ul>
             </div>
             <div class="delivery-price__column">
+            		<h3 class="delivery-price__item delivery-price__item--title">150 рублей</h3>
                 <ul class="delivery-price__list">
-                    <li class="delivery-price__item delivery-price__item--title">150 рублей</li>
                     <li class="delivery-price__item">поселок Солнечный;</li>
                     <li class="delivery-price__item">поселок Барсово;</li>
                 </ul>
+            </div>    
+            <div class="delivery-price__column">    
+                <h3 class="delivery-price__item delivery-price__item--title">150 рублей</h3>
                 <ul class="delivery-price__list">
-                    <li class="delivery-price__item delivery-price__item--title">150 рублей</li>
                     <li class="delivery-price__item">Дачные кооперативы</li>
                 </ul>
             </div>

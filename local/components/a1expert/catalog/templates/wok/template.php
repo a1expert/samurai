@@ -18,13 +18,13 @@ $i = 0; $j = 0;
 <div class="container">
     <section class="section create-wok">
         <div class="section__layout create-wok__layout">
-            <ul class="create-wok__grid">
+            <div class="create-wok__grid">
             <?foreach ($arResult['MAIN_PAGE_SECTIONS'] as $arSection)
             {
                 if($arSection['UF_ONE_PRICE'] == true)
                 {?>
 
-                    <li class="create-wok__grid-item">
+                    <div class="create-wok__grid-item">
                         <article class="create-wok__block">
                             <h3 class="create-wok__subtitle"><?=$arSection['NAME'];?><span class="create-wok__divider"> / </span><span class="create-wok__price"><?=$arResult['ITEMS'][$arSection['ITEMS_KEY'][0]]['CATALOG_PRICE_1'];?> ₽</span></h3>
                             <ul class="create-wok__list">
@@ -78,14 +78,18 @@ $i = 0; $j = 0;
                                 <?
                                 $j++;
                             }?>
+
                             </ul>
+                            <div class="wok__navigation">
+                            	<button class="wok__next js-wok-next">Далее</button>
+                            </div>
                         </article>
-                    </li>
+                    </div>
                 <?
                 }
                 else
                 {?>
-                    <li class="create-wok__grid-item">
+                    <div class="create-wok__grid-item">
                         <article class="create-wok__block">
                             <h3 class="create-wok__subtitle"><?=$arSection['NAME'];?></h3>
                             <ul class="create-wok__list">
@@ -107,11 +111,13 @@ $i = 0; $j = 0;
                             <?foreach ($arSection['ITEMS_KEY'] as $itemIndex)
                             {?>
                                 <li class="create-wok__item">
-                                    <?if($arSection['CODE'] != 'sauce'){?>
+                                <?if($arSection['CODE'] != 'sauce')
+                                {?>
                                     <img src="<?=$arResult['ITEMS'][$itemIndex]['PREVIEW_PICTURE']?>"
                                         class="wok__img wok__img-<?=$arSection['CODE'];?>"
                                         data-imgid="<?=$arResult['ITEMS'][$itemIndex]['ID'];?>"
-                                        alt="<?=$arResult['ITEMS'][$itemIndex]['NAME'];?>"><?}?>
+                                        alt="<?=$arResult['ITEMS'][$itemIndex]['NAME'];?>">
+                                <?}?>
                                     <input
                                         id="id<?=$arResult['ITEMS'][$itemIndex]['ID'];?>"
                                         type="<?=($arSection['UF_RADIO'] == true) ? 'radio' : 'checkbox';?>"
@@ -130,54 +136,64 @@ $i = 0; $j = 0;
                                 <?
                             }?>
                             </ul>
+                            <div class="wok__navigation">
+                            	<button class="wok__next js-wok-next">Далее</button>
+                            	<button class="wok__prev js-wok-prev">Вернуться назад</button>
+                            </div>
                         </article>
-                    </li>
+                    </div>
                     <?
                 }
                 $i++;
             }?>
-            </ul>
-            <div class="create-wok__output">
-                <h2 class="create-wok__title">Ваша коробочка:</h2>
-                <div class="create-wok__output-picture" id="wokPicture">
-                    <img src="/local/assets/images/box1.png" alt="ur wok" class="wok__img">
-                    <img src="<?=$defaultImg;?>" alt="ur wok" class="wok__img wok__img-base">
-                </div>
-                <form action="" class="create-wok__output-form" id="wokForm" method="GET">
-                    <div id="wokFormItemsList">
-                        <div class="create-wok__output-item">
-                            <p class="create-wok__output-info">
-                                <strong class="create-wok__name" id="baseName" data-id="<?=$defaultId;?>"><?=$defaultName;?></strong>
-                                <small class="create-wok__description" id="baseDescription"><?=$defaultDescription;?></small>
-                            </p>
-                            <p class="create-wok__output-sum">
-                                <span class="create-wok__value" id="basePrice"><?=$defaultPrice;?> <span class="currency">₽</span></span>
-                            </p>
+                 <div class="create-wok__grid-item create-wok__grid-item--output">
+                    <article class="create-wok__output">
+                        <h2 class="create-wok__title">Ваша коробочка:</h2>
+                        <div class="create-wok__output-picture" id="wokPicture">
+                            <img src="/local/assets/images/box1.png" alt="ur wok" class="wok__img">
+                            <img src="<?=$defaultImg;?>" alt="ur wok" class="wok__img wok__img-base">
                         </div>
-                    </div>
-                    <button class="wokForm__submit" id="wokFormSubmit">
-                        <svg xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <use xlink:href="/local/assets/images/icon.svg#icon_cart"></use>
-                        </svg>Добавить в корзину
-                    </button>
-                </form>
+                        <form action="" class="create-wok__output-form" id="wokForm" method="GET">
+                            <div id="wokFormItemsList">
+                                <div class="create-wok__output-item">
+                                    <p class="create-wok__output-info">
+                                        <strong class="create-wok__name" id="baseName" data-id="<?=$defaultId;?>"><?=$defaultName;?></strong>
+                                        <small class="create-wok__description" id="baseDescription"><?=$defaultDescription;?></small>
+                                    </p>
+                                    <p class="create-wok__output-sum">
+                                        <span class="create-wok__value jsItemPrice" id="basePrice" data-value="<?=$defaultPrice;?>"><?=$defaultPrice;?> <span class="currency">₽</span></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="wokSumPrice">Итого: <span class="wokSumPrice__value" id="jsWokSumPriceValue" data-value="<?=$defaultPrice;?>"><?=(int)$defaultPrice;?> ₽</span></div>
+                            <button class="wokForm__submit" id="wokFormSubmit">
+                                <svg xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <use xlink:href="/local/assets/images/icon.svg#icon_cart"></use>
+                                </svg>Добавить в корзину
+                            </button>
+                            <div class="wok__navigation">
+                            	<button class="wok__prev js-wok-reset" type="button">Сбросить</button>
+                          	</div>
+                        </form>
+                    </article>
+                </div>
             </div>
         </div>
     </section>
 </div>
 <div style="display:none;" id="simpleTemplate">
-    <div class="create-wok__output-item" id="st">
+    <div class="create-wok__output-item jsOutputItem" id="st">
         <p class="create-wok__output-info">
             <strong class="create-wok__name jsItemName"></strong>
             <small class="create-wok__description jsItemDescription"></small>
         </p>
         <p class="create-wok__output-sum">
-            <span class="create-wok__value jsItemPrice"></span>
+            <span class="create-wok__value jsItemPrice">0</span>
         </p>
     </div>
 </template>
 <div style="display:none;" id="controlsTemplate">
-    <div class="create-wok__output-item" id="ct">
+    <div class="create-wok__output-item jsOutputItem" id="ct">
         <p class="create-wok__output-info">
             <strong class="create-wok__name jsItemName"></strong>
         </p>
@@ -187,7 +203,7 @@ $i = 0; $j = 0;
             <button type="button" class="counter-control__button counter-control__button--incr jsWokIncr" data-id="" data-section="">+</button>
         </div>
         <p class="create-wok__output-sum">
-            <span class="create-wok__value jsItemPrice"></span>
+            <span class="create-wok__value jsItemPrice" data-value="">0</span>
         </p>
     </div>
 </div>

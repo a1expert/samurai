@@ -44,10 +44,10 @@ $APPLICATION->SetTitle("О компании");
 				</ul>
 				<p class="contacts__subtitle">Мы в социальных сетях:</p>
 				<ul class="contacts__socials">
-					<li class="contacts__socials-item"><a href="//<?=$cities->curCity['props']['VK_LINK']['VALUE'];?>">Vkontakte</a></li>
-					<li class="contacts__socials-item"><a href="//<?=$cities->curCity['props']['INSTA_LINK']['VALUE'];?>">Instagram</a></li>
-					<li class="contacts__socials-item"><a href="//<?=$cities->curCity['props']['OK_LINK']['VALUE'];?>">Одноклассники</a></li>
-					<li class="contacts__socials-item"><a href="//<?=$cities->curCity['props']['FB_LINK']['VALUE'];?>">Facebook</a></li>
+					<li class="contacts__socials-item"><a href="<?=$cities->curCity['props']['VK_LINK']['VALUE'];?>" target="_blank">Vkontakte</a></li>
+					<li class="contacts__socials-item"><a href="<?=$cities->curCity['props']['INSTA_LINK']['VALUE'];?>" target="_blank">Instagram</a></li>
+					<li class="contacts__socials-item"><a href="<?=$cities->curCity['props']['OK_LINK']['VALUE'];?>" target="_blank">Одноклассники</a></li>
+					<li class="contacts__socials-item"><a href="<?=$cities->curCity['props']['FB_LINK']['VALUE'];?>" target="_blank">Facebook</a></li>
 				</ul>
 			</section>
 		</div>
@@ -98,7 +98,7 @@ $APPLICATION->SetTitle("О компании");
 	"SET_META_DESCRIPTION" => "Y",
 	"SET_META_KEYWORDS" => "Y",
 	"SET_STATUS_404" => "N",
-	"SET_TITLE" => "Y",
+	"SET_TITLE" => "N",
 	"SHOW_404" => "N",
 	"SORT_BY1" => "TIMESTAMP_X",
 	"SORT_BY2" => "",
