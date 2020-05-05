@@ -48,16 +48,15 @@ class Basket
             if ($quantity > 0)
             {
                 $item = $basket->createItem('catalog', $productId);
-                $item->setFields(
-                [
-                    'QUANTITY' => $quantity,
+                $item->setField('QUANTITY', $quantity);
+                $item->setFields([
                     'CURRENCY' => \Bitrix\Currency\CurrencyManager::getBaseCurrency(),
                     'LID' => $this->_getSite(),
                     'PRODUCT_PROVIDER_CLASS' => 'CCatalogProductProvider',
                 ]);
             }
         }        
-        $basket->save();
+        $result = $basket->save();
         return $this->get();
     }
     public static function Wok($arrId)
@@ -131,7 +130,7 @@ class Basket
                     'IBLOCK_ID' => $iblockID,
                     'SECTION_ID' => $section['ID'],
                     'PRICE' => $discountPrice,
-                    'NAME' => $basketItem->getField('NAME'),
+                    'NAME' => $ar_res['NAME'],
                     'IMG' => $img['SRC'],
                     'QUANTITY' => $basketItem->getQuantity(),
                     'ELEMENT_INFO' => \CCatalogSku::GetProductInfo($productId),
